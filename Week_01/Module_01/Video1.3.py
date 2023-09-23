@@ -1,18 +1,3 @@
-# 1.1 Introduction to python and environment setup
-#-----------------------------------------------------------------------------------------------------------------------
-# History of Python (https://www.geeksforgeeks.org/history-of-python/).
-# Python interpreter download link (https://www.python.org/downloads/).
-# Currently, the v3.10 is latest and stable version, so I've installed this one.
-# Python installation can be checked from cmd, using [python --version] command.
-# Some minor Python code can also be executed in cmd, using [python] command. After entering this command, start coding.
-# After coding in cmd, is can be closed using [ctrl+z] command. And the [exit] will close the cmd window.
-#-----------------------------------------------------------------------------------------------------------------------
-# 1.2 Run python code in terminal and VS code
-#-----------------------------------------------------------------------------------------------------------------------
-"""print("New Journey: Learning Python")
-print(123)
-print(456)
-print(789)"""
 #-----------------------------------------------------------------------------------------------------------------------
 # 1.3 Basic Data Types and Variables in python
 #-----------------------------------------------------------------------------------------------------------------------
@@ -29,12 +14,12 @@ feeling_sleepy = False          # boolean variable
 # Try printing the variables.
 print(age)
 print(interest_rate)
+
 print(age + interest_rate)
 print(age * interest_rate)
 
 print(song)
 print(area)
-print(song + area)
 
 # Try finding the data type of variable using type function.
 print(type(age))
@@ -48,3 +33,16 @@ print(type(feeling_sleepy))
 # Single line commenting using [#] at the beginning of the line.
 # Multiple line commenting using [#] at the beginning of the line or select all and [ctrl+/].
 # Multiple line commenting using [""" """] at the beginning and the ending of the code snippet.
+# Multiple line commenting is also known as doc string.
+
+# String concatenation in Python.
+print(song + area)
+print('Dance in the rain' + ' ' + 'Frankfurt am Main')
+# To Learn more, visit (https://www.geeksforgeeks.org/python-string-concatenation/).
+
+
+# f-String in Python.
+text = f"Zahid kamal {age}, living in {area}, saving {interest_rate}% as Zakat."
+print(text)
+# To Learn more, visit (https://www.geeksforgeeks.org/formatted-string-literals-f-strings-python/).
+#-----------------------------------------------------------------------------------------------------------------------
