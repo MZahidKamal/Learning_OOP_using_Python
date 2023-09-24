@@ -16,14 +16,16 @@
 # Again taking input, saving into a variable, and then print it.
 # penPrice = input("The price of the pen is: ")
 # paperPrice = input("The price of the paper is: ")
+
 # print(penPrice, paperPrice)
 # print("The prices of the pen and paper are respectively ", penPrice, paperPrice)
 
 # Now adding the prices and printing the total price.
 # totalPrice = penPrice + paperPrice
 # print("The total price of the pen and paper is ", totalPrice)
+
 # Here is a problem!! If we say the penPrice is 20 and the paperPrice is 10, then the total price will be printed 2010.
-# Why? Because Python is taking inputs as string data type by default. So it's actually concatenating 20 and 10.
+# Why? Because Python TAKE INPUTS only as string data type by default. So it's actually concatenating 20 and 10.
 
 # Let's check it.
 # print(type(totalPrice))
