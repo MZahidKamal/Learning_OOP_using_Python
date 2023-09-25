@@ -30,5 +30,7 @@ print(y)
 
 
 #-----------------------------------------------------------------------------------------------------------------------
+# Let's use the double_this_number function again. Example of using a function into another function.
 double_this_number(x)
 double_this_number(y)
+#-----------------------------------------------------------------------------------------------------------------------
