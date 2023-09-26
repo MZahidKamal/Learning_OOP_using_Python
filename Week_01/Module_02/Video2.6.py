@@ -45,3 +45,46 @@ print(random_numbers[:])
 # Second one will print starting from beginning and will go till the index -6.
 # Third one will print starting from beginning and will go till the end index, as starting and ending is not mentioned.
 #-----------------------------------------------------------------------------------------------------------------------
+# Let's do the same thing again, but this time we'll print the complete array in reverse order, and shortly.
+print(random_numbers[::-1])
+#-----------------------------------------------------------------------------------------------------------------------
+# There are some very important built in methods to handle List is Python. Visit, read and practice them.
+"""
+list.append(x)
+Add an item to the end of the list. Equivalent to a[len(a):] = [x].
+
+list.extend(iterable)
+Extend the list by appending all the items from the iterable. Equivalent to a[len(a):] = iterable.
+
+list.insert(i, x)
+Insert an item at a given position.
+
+list.remove(x)
+Remove the first item from the list whose value is equal to x.
+
+list.pop([i])
+Remove the item at the given position in the list, and return it.
+If no index is specified, a.pop() removes and returns the last item in the list.
+
+list.clear()
+Remove all items from the list. Equivalent to del a[:].
+
+list.index(x[, start[, end]])
+Return zero-based index in the list of the first item whose value is equal to x.
+
+list.count(x)
+Return the number of times x appears in the list.
+
+list.sort(*, key=None, reverse=False)
+Sort the items of the list in place (the arguments can be used for sort customization, see sorted() for their explanation.
+
+list.reverse()
+Reverse the elements of the list in place.
+
+list.copy()
+Return a shallow copy of the list. Equivalent to a[:].
+
+An example that uses most of the list methods:
+"""
+# To Learn more, visit (https://docs.python.org/3/tutorial/datastructures.html).
+#-----------------------------------------------------------------------------------------------------------------------
