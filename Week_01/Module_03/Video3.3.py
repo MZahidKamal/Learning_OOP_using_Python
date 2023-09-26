@@ -9,6 +9,12 @@ random_numbers = [12, 56, 98, 78, 56, 12, 6, 98]
 print(random_numbers)
 print(type(random_numbers))
 #-----------------------------------------------------------------------------------------------------------------------
+# If we want to print the list along with the index numbers, we'll use [enumerate()] method.
+
+for i, num in enumerate(random_numbers):
+    print(f'{i}: {num}')
+print()
+#-----------------------------------------------------------------------------------------------------------------------
 # Now let's convert it into a Tuple and print.
 random_numbers_tuple = tuple(random_numbers)
 print(random_numbers_tuple)
@@ -16,6 +22,7 @@ print(type(random_numbers_tuple))
 
 # In the above code, see the changes in the output.
 # After converting to set, () came instead of [].
+print()
 #-----------------------------------------------------------------------------------------------------------------------
 # Now let's convert it into a Set and print.
 random_numbers_set = set(random_numbers)
@@ -24,21 +31,25 @@ print(type(random_numbers_set))
 
 # In the above code, see the changes in the output.
 # After converting to set, {} came instead of [], and all duplicate are removed.
+print()
 #-----------------------------------------------------------------------------------------------------------------------
 random_numbers_set.add(55)
 print(random_numbers_set)
 
 # In the above code, we've added a number into the set and printed it.
 # See the output, the new element is added and already sorted.
+print()
 #-----------------------------------------------------------------------------------------------------------------------
 random_numbers_set.remove(78)
 print(random_numbers_set)
 
 # In the above code, we've removed a number from the set and printed it.
 # See the output, after removing element it's still sorted.
+print()
 #-----------------------------------------------------------------------------------------------------------------------
 for num in random_numbers_set:
     print(num)
+print()
 #-----------------------------------------------------------------------------------------------------------------------
 A = {1, 3, 5, 7, 9}
 B = {1, 2, 3, 4, 5}
@@ -46,4 +57,5 @@ print(A & B)
 print(A | B)
 
 # The above code is printing only the elements which is common in both A and B.
+print()
 #-----------------------------------------------------------------------------------------------------------------------
