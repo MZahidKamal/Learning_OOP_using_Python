@@ -3,7 +3,6 @@
 #-----------------------------------------------------------------------------------------------------------------------
 #Creating a user defined class. And initializing some values in it.
 class Phone:
-    Manufacturer = 'China'
 
     #Creating the constructor ot this class.
     def __init__(self, brand, model, release_year, price):
