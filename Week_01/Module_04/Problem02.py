@@ -14,9 +14,8 @@ elementWithCountDict = {key: 0 for key in ListA}
 removalCounter = 0
 
 #We'll extract each key from the dict, will count its presence in the list, and will save the count as the value.
-for key, value in elementWithCountDict.items():
-    numCount = ListA.count(key)
-    elementWithCountDict[key] = numCount
+for key in ListA:
+    elementWithCountDict[key] += 1
 
 #Loop iteration to extract each key and value from the dict.
 #If the value is more than kex, calculate how much we'll remove.
@@ -30,7 +29,6 @@ for key, value in elementWithCountDict.items():
 #Printing the final removal count.
 print(removalCounter)
 
-# TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE
 #-----------------------------------------------------------------------------------------------------------------------
 
 """

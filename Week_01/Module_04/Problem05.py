@@ -19,8 +19,8 @@ import pyautogui
 
 #Taking the input of any random integer.
 # N = int(input())
-
-#Printing the character '#' incrementally with the value of i.
+#
+# #Printing the character '#' incrementally with the value of i.
 # for i in range(1, N+1):
 #     print('#' * i)
 
