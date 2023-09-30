@@ -22,12 +22,12 @@ for i in range(0, 3):
 # OpenCV-Contrib-Python installation.
 # To Learn more, visit (https://pypi.org/project/opencv-contrib-python/).
 
-webcam = cv2.VideoCapture(0)
-
-while True:
-    _, frame = webcam.read()
-    cv2.imshow('My webcam:', frame)
-    cv2.waitKey(1)
+# webcam = cv2.VideoCapture(0)
+#
+# while True:
+#     _, frame = webcam.read()
+#     cv2.imshow('My webcam:', frame)
+#     cv2.waitKey(1)
 
 # The code above will open up a window, will connect with my webcam and will show the live feed.
 #-----------------------------------------------------------------------------------------------------------------------
