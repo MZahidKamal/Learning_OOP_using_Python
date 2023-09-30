@@ -20,3 +20,26 @@ for X in range(K+1):
 print(count)
 
 # TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE TLE
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+"""
+//Three numbers
+
+Read two integers, start and end, from the input.
+
+Initialize a variable counter to 0. This variable will be used to count the valid triplets.
+
+Use two nested loops to iterate through all possible values of x and y from 0 to start.
+
+For each combination of x and y, calculate the value of z using the condition end - x - y.
+
+Check if the value of z is non-negative (i.e., 0 <= z) and if it is less than or equal to start. If both conditions are satisfied, increment the counter by 1.
+
+Continue iterating through all possible combinations of x and y.
+
+After both loops complete, counter will contain the count of valid triplets.
+
+Print the value of counter.
+"""
+#-----------------------------------------------------------------------------------------------------------------------

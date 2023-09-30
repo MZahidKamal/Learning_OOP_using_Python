@@ -39,7 +39,7 @@ def full_name(first, last, **additional):
 
 full_name(last='Bosch', first='Robert', salutation='Eng.', degree='P.Hd.')
 #-----------------------------------------------------------------------------------------------------------------------
-# Let's do the same code again, but this time with *args and *kargs.
+# Let's do the same code again, but this time with *args and **kargs.
 def profile_info(first, last, *subjects, **marks):
     profile = f'Student Name: {first} {last}'
     print(profile)
