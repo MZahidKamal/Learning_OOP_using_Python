@@ -10,7 +10,7 @@ def call():
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-#Creating a user defined class. And initializing some values in it.
+#Creating a user defined class with some attributes. And initializing some values in it.
 class Phone:
     Brand = 'Samsung'
     Model = 'A71'

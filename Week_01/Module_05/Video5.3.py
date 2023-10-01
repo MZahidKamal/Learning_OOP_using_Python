@@ -4,7 +4,8 @@
 #Creating a user defined class. And initializing some values in it.
 class Phone:
 
-    #Creating the constructor ot this class.
+    #Creating the constructor ot this class with some attributes.
+    #Adding attributes under the constructor, is called 'Instance Attributes'.
     def __init__(self, brand, model, release_year, price):
         self.brand = brand
         self.model = model

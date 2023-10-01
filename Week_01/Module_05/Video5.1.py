@@ -5,7 +5,8 @@
 #which can be accessed and used by creating an instance of that class. A class is like a blueprint for an object.
 
 
-#Creating a user defined class. And initializing some values in it.
+#Creating a user defined class with some attributes. And initializing some values in it.
+#Adding attributes directly under the class, is called 'Class Attributes'.
 class Phone:
     Brand = 'Samsung'
     Model = 'A71'
