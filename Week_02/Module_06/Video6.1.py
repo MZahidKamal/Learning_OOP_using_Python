@@ -13,24 +13,32 @@ class Company:
         self.drivers = []
         self.supervisors = []
         self.managers = []
+
 #-----------------------------------------------------------------------------------------------------------------------
+
 class Driver:
     def __init__(self, name, age, licence):
         self.name = name
         self.age = age
         self.licence = licence
+
 #-----------------------------------------------------------------------------------------------------------------------
+
 class Counter:
     def __init__(self):
         pass
 
     def purchase_ticket(self, start, destination):
         pass
+
 #-----------------------------------------------------------------------------------------------------------------------
+
 class Passenger:
     def __init__(self):
         pass
+
 #-----------------------------------------------------------------------------------------------------------------------
+
 class Supervisor:
     def __init__(self):
         pass
