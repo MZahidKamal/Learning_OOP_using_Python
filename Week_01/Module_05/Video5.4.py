@@ -54,7 +54,7 @@ shopping mall.
 If we want to keep the shopping car independent for each instances, we must use instance attribute. Let's see how.
 """
 #-----------------------------------------------------------------------------------------------------------------------
-#Creating a class with class attributes.
+#Creating a class with instance attributes.
 class Shop:
     shopping_mall = 'Wallmart'
 
