@@ -58,8 +58,8 @@ model, price]. Also the [run] function is common in all classes. While creating 
 To save time, space and resource, and to make it more organized, there is [Inheritance] is introduced.
 Inheritance is the capability of one class to derive or inherit the properties from another class.
 
-Parent class is the class being inherited from, also called base class.
-Child class is the class that inherits from another class, also called derived class.
+Base class / Parent class:      is the class being inherited from, also called base class.
+Derived class / Child class:    is the class that inherits from another class, also called derived class.
 
 // To Learn more, visit (https://www.geeksforgeeks.org/inheritance-in-python/).
 // To Learn more, visit (https://www.w3schools.com/python/python_inheritance.asp).
