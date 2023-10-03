@@ -50,7 +50,7 @@ class Book:
         self.selling_stores = []
 
     def book_details(self):
-        print('Title: {self.name}')
+        print(f'Title: {self.name}')
 
 theLearnStartup = Book('The Lean Startup', 'Eric Ries', '978-0307887894', '1st', '2011-09-13', 'Crown Business')
 zeroToOne = Book('Zero to One', 'Peter Thiel', '978-0804139298', '1st', '2014-09-16', 'Crown Business')
@@ -58,4 +58,4 @@ goodToGreat = Book('Good to Great', 'Jim Collins', '978-0066620992', '1st', '200
 theInnovatorsDilemma = Book('The Innovator\'s Dilemma', 'Clayton Christensen', '978-1633691780', '1st', '1997-05-01', 'Harper Business')
 thinkingFastAndSlow = Book('Thinking, Fast and Slow', 'Daniel Kahneman', '978-0374533557', '1st', '2011-10-25', 'Farrar, Straus and Giroux')
 
-print(theLearnStartup.name)
+print(theLearnStartup.book_details())
