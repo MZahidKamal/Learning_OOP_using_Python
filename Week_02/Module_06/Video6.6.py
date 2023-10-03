@@ -29,5 +29,9 @@ lyca = Monkey('Lyca')
 lyca.eat()
 
 #-----------------------------------------------------------------------------------------------------------------------
+"""
+An abstract class in Python is typically created to declare a set of methods that must be created in any child class 
+built on top of this abstract class.
+"""
 # To Learn more, visit (https://www.geeksforgeeks.org/abstract-classes-in-python/).
 #-----------------------------------------------------------------------------------------------------------------------
