@@ -27,9 +27,17 @@ class Hall(StarCinema):
         super().__init__()
         self.entry_hall(self)
 
+
     def entry_show(self, show_id, show_name, show_time):
+        #Creating a Tupple with show information, naming it 'show' and appending it into the show_list.
         show = (show_id, show_name, show_time)
         self.show_list.append(show)
+        #
+        #Creating a 2D matrix of rows and columns, and initializing all cells of the 2D matrix with 'Free'.
+        #Naming it 'seat_matrix', putting it into the seats dictionary as KEY = show_id and VALUE = seat_matrix.
+        seat_matrix = [['Free' for _ in range(self.columns)] for _ in range(self.rows)]
+        self.seats[show_id] = seat_matrix
+
 
 #Creating a cinema hall building. The name is CineStar.
 cinestar = StarCinema()
@@ -38,14 +46,22 @@ cinestar = StarCinema()
 #initializer of the StarCinema class, as soon as a hall object is created, it'll automatically be added in the list.
 dolby_hall_11 = Hall(12, 20, 11)
 
-#cinestar.entry_hall(dolby_hall_11)
-
 #To check, let's print the length of the list. If the size is increased by 1, then insertion successful.
 print(len(cinestar.hall_list))
+
+#-----------------------------------------------------------------------------------------------------------------------
 
 #A new method 'entry_show' is created under the class Hall. Then a show is entered using that function.
 dolby_hall_11.entry_show('2956', 'Prison Break', '18:00')
 
 #To check, let's print the length of the list. If the size is increased by 1, then insertion successful.
 print(len(dolby_hall_11.show_list))
+
+#Also creating a 2D matrix of rows and columns, and initializing all cells of the 2D matrix with 'Free'. Naming it
+#'seat_matrix', putting it into the seats dictionary as KEY = show_id and VALUE = seat_matrix. As soon as a show is
+#entered, a seat matrix with all free seats will be associated with the show id number.
+
+#To check, let's print the length of the list. If the size is increased by 1, then insertion successful.
+print(len(dolby_hall_11.seats))
+
 #-----------------------------------------------------------------------------------------------------------------------
