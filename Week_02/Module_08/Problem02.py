@@ -54,6 +54,8 @@ class Hall(StarCinema):
         super().__init__()
         self.entry_hall(self)
 
+#-----------------------------------------------------------------------------------------------------------------------
+
 #Creating a cinema hall building. The name is CineStar.
 cinestar = StarCinema()
 
@@ -65,4 +67,5 @@ dolby_hall_11 = Hall(12, 20, 11)
 
 #To check, let's print the length of the list. If the size is increased by 1, then insertion successful.
 print(len(cinestar.hall_list))
+
 #-----------------------------------------------------------------------------------------------------------------------

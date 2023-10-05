@@ -38,6 +38,7 @@ class Hall(StarCinema):
         seat_matrix = [['Free' for _ in range(self.columns)] for _ in range(self.rows)]
         self.seats[show_id] = seat_matrix
 
+#-----------------------------------------------------------------------------------------------------------------------
 
 #Creating a cinema hall building. The name is CineStar.
 cinestar = StarCinema()
