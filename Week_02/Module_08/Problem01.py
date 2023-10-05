@@ -12,3 +12,4 @@ class StarCinema:
 
     def entry_hall(self, hall):                 # Here hall will be an object of class Hall.
         self.hall_list.append(hall)
+#-----------------------------------------------------------------------------------------------------------------------
