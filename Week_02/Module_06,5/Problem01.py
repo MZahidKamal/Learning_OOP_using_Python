@@ -50,7 +50,13 @@ class Book:
         self.selling_stores = []
 
     def book_details(self):
+        print('----- Book Details -----')
         print(f'Title: {self.name}')
+        print(f'Author: {self.author}')
+        print(f'Edition: {self.edition}, ISBN: {self.isbn}')
+        print(f'Published on: {self.published_on}, from {self.publisher} Publishers')
+        return '-----'
+
 
 theLearnStartup = Book('The Lean Startup', 'Eric Ries', '978-0307887894', '1st', '2011-09-13', 'Crown Business')
 zeroToOne = Book('Zero to One', 'Peter Thiel', '978-0804139298', '1st', '2014-09-16', 'Crown Business')
