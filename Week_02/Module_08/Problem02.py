@@ -20,6 +20,7 @@ class StarCinema:
         self.hall_list.append(hall)
 
 #-----------------------------------------------------------------------------------------------------------------------
+"""
 class Hall:
     def __init__(self, rows, columns, hall_no):
         self.seats = {}                  # Dictionary of seat's information
@@ -27,7 +28,6 @@ class Hall:
         self.rows = rows                 # The row of the seats in that hall
         self.columns = columns           # The column of the seats in that hall
         self.hall_no = hall_no           # The unique no. of that hall
-
 
 #Creating a cinema hall building. The name is CineStar.
 cinestar = StarCinema()
@@ -40,5 +40,29 @@ cinestar.entry_hall(dolby_hall_11)
 
 #To check, let's print the length of the list. If 1, then insertion successful.
 print(len(cinestar.hall_list))
+"""
+#-----------------------------------------------------------------------------------------------------------------------
+class Hall(StarCinema):
+    def __init__(self, rows, columns, hall_no):
+        self.seats = {}                  # Dictionary of seat's information
+        self.show_list = []              # [()()()] List of Tuples
+        #
+        self.rows = rows                 # The row of the seats in that hall
+        self.columns = columns           # The column of the seats in that hall
+        self.hall_no = hall_no           # The unique no. of that hall
+        #
+        super().__init__()
+        self.entry_hall(self)
 
+#Creating a cinema hall building. The name is CineStar.
+cinestar = StarCinema()
+
+#Creating a cinema hall named dolby_hall_01. Because of inheriting the Hall class from the StarCinema, and using the
+#initializer of the StarCinema class, as soon as a hall object is created, it'll automatically be added in the list.
+dolby_hall_11 = Hall(12, 20, 11)
+
+#cinestar.entry_hall(dolby_hall_11)
+
+#To check, let's print the length of the list. If 1, then insertion successful.
+print(len(cinestar.hall_list))
 #-----------------------------------------------------------------------------------------------------------------------
