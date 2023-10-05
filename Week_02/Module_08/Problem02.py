@@ -63,6 +63,6 @@ dolby_hall_11 = Hall(12, 20, 11)
 
 #cinestar.entry_hall(dolby_hall_11)
 
-#To check, let's print the length of the list. If 1, then insertion successful.
+#To check, let's print the length of the list. If the size is increased by 1, then insertion successful.
 print(len(cinestar.hall_list))
 #-----------------------------------------------------------------------------------------------------------------------

@@ -27,6 +27,10 @@ class Hall(StarCinema):
         super().__init__()
         self.entry_hall(self)
 
+    def entry_show(self, show_id, show_name, show_time):
+        show = (show_id, show_name, show_time)
+        self.show_list.append(show)
+
 #Creating a cinema hall building. The name is CineStar.
 cinestar = StarCinema()
 
@@ -36,6 +40,12 @@ dolby_hall_11 = Hall(12, 20, 11)
 
 #cinestar.entry_hall(dolby_hall_11)
 
-#To check, let's print the length of the list. If 1, then insertion successful.
+#To check, let's print the length of the list. If the size is increased by 1, then insertion successful.
 print(len(cinestar.hall_list))
+
+#A new method 'entry_show' is created under the class Hall. Then a show is entered using that function.
+dolby_hall_11.entry_show('2956', 'Prison Break', '18:00')
+
+#To check, let's print the length of the list. If the size is increased by 1, then insertion successful.
+print(len(dolby_hall_11.show_list))
 #-----------------------------------------------------------------------------------------------------------------------
