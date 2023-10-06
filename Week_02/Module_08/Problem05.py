@@ -49,6 +49,11 @@ class Hall(StarCinema):
                 print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice show time.')
         return
 
+    def view_show_list(self):
+        for show in self.show_list:
+            print(f'ID: {show[0]}     Show Name: {show[1]}     Show Time: {show[2]} o\'clock')
+
+
 #-----------------------------------------------------------------------------------------------------------------------
 
 #Creating a cinema hall building. The name is CineStar.
@@ -81,6 +86,15 @@ print(len(dolby_hall_11.seats))
 #Now creating another method 'book_seat', under the class Hall. It takes a desired show ID number, a desired seat's row
 #and column number, and book the seat for the show if available.
 
+#Let's see the output.
 dolby_hall_11.book_seat(2956, 12, 20)
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+#Now creating another method 'view_show_list', under the class Hall. It takes no argument, but return the complete list
+#of a show running in this hall.
+
+#Let's see the output.
+dolby_hall_11.view_show_list()
 
 #-----------------------------------------------------------------------------------------------------------------------
