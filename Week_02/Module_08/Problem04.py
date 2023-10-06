@@ -39,15 +39,16 @@ class Hall(StarCinema):
 
     def book_seat(self, desired_show_id, desired_row, desired_column):
         if desired_show_id not in self.seats:
-            return f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.'
+            print(f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.')
         else:
             if desired_row <= 0 or desired_row > self.rows or desired_column <= 0 or desired_column > self.columns:
-                return f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.'
+                print(f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.')
             elif self.seats[desired_show_id][desired_row][desired_column] != 'Free':
-                return f'Seat at row {desired_row} column {desired_column} is already booked. Please choose another seat.'
+                print(f'Seat at row {desired_row} column {desired_column} is already booked. Please choose another seat.')
             else:
                 self.seats[desired_show_id][desired_row][desired_column] = 'Booked'
-                return f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice show time.'
+                print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice show time.')
+        return
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -71,13 +72,16 @@ print(len(dolby_hall_11.show_list))
 
 #Also creating a 2D matrix of rows and columns, and initializing all cells of the 2D matrix with 'Free'. Naming it
 #'seat_matrix', putting it into the seats dictionary as KEY = show_id and VALUE = seat_matrix. As soon as a show is
-#entered, a seat matrix with all free seats will be associated with the show id number.
+#entered, a seat matrix, with all free seats, will be associated with the show id number.
 
 #To check, let's print the length of the list. If the size is increased by 1, then insertion is successful.
 print(len(dolby_hall_11.seats))
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-print(dolby_hall_11.book_seat(2956, 12, 20))
+#Now creating another method 'book_seat', under the class Hall. It takes a desired show ID number, a desired seat's row
+#and column number, and book the seat for the show if available.
+
+dolby_hall_11.book_seat(2956, 12, 20)
 
 #-----------------------------------------------------------------------------------------------------------------------
