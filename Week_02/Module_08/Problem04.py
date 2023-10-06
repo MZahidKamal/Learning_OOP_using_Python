@@ -19,8 +19,8 @@ class Hall(StarCinema):
         self.seats = {}                  # Dictionary of seat's information
         self.show_list = []              # [()()()] List of Tuples
         #
-        self.rows = rows+1               # The row of the seats in that hall
-        self.columns = columns+1         # The column of the seats in that hall
+        self.rows = rows                 # The row of the seats in that hall
+        self.columns = columns           # The column of the seats in that hall
         self.hall_no = hall_no           # The unique no. of that hall
         #
         super().__init__()

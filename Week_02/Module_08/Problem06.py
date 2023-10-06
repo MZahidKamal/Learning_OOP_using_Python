@@ -19,8 +19,8 @@ class Hall(StarCinema):
         self.seats = {}                  # Dictionary of seat's information
         self.show_list = []              # [()()()] List of Tuples
         #
-        self.rows = rows+1               # The row of the seats in that hall
-        self.columns = columns+1         # The column of the seats in that hall
+        self.rows = rows                 # The row of the seats in that hall
+        self.columns = columns           # The column of the seats in that hall
         self.hall_no = hall_no           # The unique no. of that hall
         #
         super().__init__()
@@ -46,13 +46,17 @@ class Hall(StarCinema):
             elif self.seats[desired_show_id][desired_row][desired_column] != 'Free':
                 print(f'Seat at row {desired_row} column {desired_column} is already booked. Please choose another seat.')
             else:
-                self.seats[desired_show_id][desired_row][desired_column] = 'Booked'
+                self.seats[desired_show_id][desired_row-1][desired_column-1] = 'Booked'
                 print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice show time.')
         return
 
     def view_show_list(self):
         for show in self.show_list:
             print(f'ID: {show[0]}     Show Name: {show[1]}     Show Time: {show[2]} o\'clock')
+
+    def view_available_seats(self, desired_show_id):
+        for seat_matrix in self.seats[desired_show_id]:
+            print(seat_matrix, end="\n")
 
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -88,7 +92,7 @@ print(len(dolby_hall_11.seats))
 #and column number, and book the seat for the show if available.
 
 #Let's see the output.
-dolby_hall_11.book_seat(2956, 12, 20)
+dolby_hall_11.book_seat(2956, 2, 13)
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -97,5 +101,13 @@ dolby_hall_11.book_seat(2956, 12, 20)
 
 #Let's see the output.
 dolby_hall_11.view_show_list()
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+#Now creating another method 'view_available_seats', under the class Hall. It takes the show id number as argument, and
+#return the complete seat plan of the show in this hall.
+
+#Let's see the output.
+dolby_hall_11.view_available_seats(2956)
 
 #-----------------------------------------------------------------------------------------------------------------------
