@@ -34,7 +34,7 @@ class Hall(StarCinema):
         #
         #Creating a 2D matrix of rows and columns, and initializing all cells of the 2D matrix with 'Free'.
         #Naming it 'seat_matrix', putting it into the seats dictionary as KEY = show_id and VALUE = seat_matrix.
-        seat_matrix = [['Free' for _ in range(self.columns)] for _ in range(self.rows)]
+        seat_matrix = [['_Free_' for _ in range(self.columns)] for _ in range(self.rows)]
         self.seats[show_id] = seat_matrix
 
     def book_seat(self, desired_show_id, desired_row, desired_column):
@@ -43,7 +43,7 @@ class Hall(StarCinema):
         else:
             if desired_row <= 0 or desired_row > self.rows or desired_column <= 0 or desired_column > self.columns:
                 print(f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.')
-            elif self.seats[desired_show_id][desired_row][desired_column] != 'Free':
+            elif self.seats[desired_show_id][desired_row][desired_column] != '_Free_':
                 print(f'Seat at row {desired_row} column {desired_column} is already booked. Please choose another seat.')
             else:
                 self.seats[desired_show_id][desired_row-1][desired_column-1] = 'Booked'
@@ -55,8 +55,11 @@ class Hall(StarCinema):
             print(f'ID: {show[0]}     Show Name: {show[1]}     Show Time: {show[2]} o\'clock')
 
     def view_available_seats(self, desired_show_id):
-        for seat_matrix in self.seats[desired_show_id]:
-            print(seat_matrix, end="\n")
+        if desired_show_id not in self.seats:
+            print(f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.')
+        else:
+            for seat_matrix in self.seats[desired_show_id]:
+                print(seat_matrix, end="\n")
 
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -92,6 +95,7 @@ print(len(dolby_hall_11.seats))
 #and column number, and book the seat for the show if available.
 
 #Let's see the output.
+print()
 dolby_hall_11.book_seat(2956, 2, 13)
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -100,6 +104,7 @@ dolby_hall_11.book_seat(2956, 2, 13)
 #of a show running in this hall.
 
 #Let's see the output.
+print()
 dolby_hall_11.view_show_list()
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -108,6 +113,7 @@ dolby_hall_11.view_show_list()
 #return the complete seat plan of the show in this hall.
 
 #Let's see the output.
+print()
 dolby_hall_11.view_available_seats(2956)
 
 #-----------------------------------------------------------------------------------------------------------------------
