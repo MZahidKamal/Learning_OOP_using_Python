@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # Python Mid Term Exam
-# https://docs.google.com/document/d/1DxHEw2Ij6FTqMijlkn4NH6U1BdxeesyLWOjINiKFtR0/edit?usp=sharing
+# https://docs.google.com/document/d/1OZH_1S1pcmloJz-PZWwLVbLcx0Zob1YVoWNTvVIXUNI/edit
 # Problem 07:
 """
 """
@@ -49,7 +49,7 @@ class Counter(StarCinema):
     #
     #         else:
     #             self.seats[desired_show_id][desired_row-1][desired_column-1] = 'Booked'
-    #             print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice show time.')
+    #             print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice showtime.')
     #     return
 
 
