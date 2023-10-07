@@ -3,6 +3,8 @@
 # https://docs.google.com/document/d/1OZH_1S1pcmloJz-PZWwLVbLcx0Zob1YVoWNTvVIXUNI/edit
 # Problem 07:
 """
+Make a replica system so that the counter can view all shows that are running, view available seats in a show and can
+book tickets in a show.
 """
 #-----------------------------------------------------------------------------------------------------------------------
 class StarCinema:
@@ -37,20 +39,23 @@ class Counter(StarCinema):
             for seat_matrix in self.seats[desired_show_id]:
                 print(seat_matrix, end="\n")
 
-    # def book_seat(self, desired_show_id, desired_row, desired_column):
-    #     if desired_show_id not in self.seats:
-    #         print(f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.')
-    #     else:
-    #         if (desired_row <= 0 or desired_row > self.rows or desired_column <= 0 or desired_column > self.columns):
-    #             print(f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.')
-    #
-    #         elif self.seats[desired_show_id][desired_row][desired_column] != '_Free_':
-    #             print(f'Seat at row {desired_row} column {desired_column} is already booked. Please choose another seat.')
-    #
-    #         else:
-    #             self.seats[desired_show_id][desired_row-1][desired_column-1] = 'Booked'
-    #             print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice showtime.')
-    #     return
+
+    def book_ticket(self, desired_show_id, desired_row, desired_column):
+        rows = len(self.seats[desired_show_id])
+        columns = len(self.seats[desired_show_id][0])
+        if desired_show_id not in self.seats:
+            print(f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.')
+        else:
+            if (desired_row <= 0 or desired_row > rows or desired_column <= 0 or desired_column > columns):
+                print(f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.')
+
+            elif self.seats[desired_show_id][desired_row][desired_column] != '_Free_':
+                print(f'Seat at row {desired_row} column {desired_column} is already booked. Please choose another seat.')
+
+            else:
+                self.seats[desired_show_id][desired_row-1][desired_column-1] = 'Booked'
+                print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice showtime.')
+        return
 
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -167,12 +172,21 @@ dolby_hall_11.view_available_seats(2956)
 #-----------------------------------------------------------------------------------------------------------------------
 
 #Now creating another class 'Counter'. It will take not argument, but can create an object.
-
 counter = Counter()
 print()
 print(len(cinestar.counter_list))
+
+#Some more tests and outputs.
 print(len(counter.hall_list))
 print(len(counter.show_list))
+
+#Accessing the show list and the available seats from the counter.
 counter.view_show_list()
 counter.view_available_seats(2956)
-#counter.book_seat(2956, 5, 10)
+
+#Booking a ticket from the counter.
+print()
+counter.book_ticket(2956, 5, 10)
+counter.view_available_seats(2956)
+
+#-----------------------------------------------------------------------------------------------------------------------
