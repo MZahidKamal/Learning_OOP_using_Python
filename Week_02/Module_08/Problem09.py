@@ -190,3 +190,6 @@ counter.book_ticket(2956, 5, 10)
 counter.view_available_seats(2956)
 
 #-----------------------------------------------------------------------------------------------------------------------
+totalHall = len(StarCinema.hall_list)
+print(totalHall)
+

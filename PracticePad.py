@@ -1,3 +1,6 @@
+import sys
+
+
 class StarCinema:
     hall_list = []
     counter_list = []
@@ -106,8 +109,112 @@ class Hall(StarCinema):
 
 
 #-----------------------------------------------------------------------------------------------------------------------
+print()
+print('Hello. Welcome to Star Cinema Complex.')
+while True:
+    print()
+    print('Choose your roll:')
+    print('', '1. Business Owner/Administrator', '\n', '2. Hall Supervisor', '\n', '3. Counter Manager', '\n', '4. Logout')
+    print()
+    userInput1 = int(input('Your selection: '))
+
+    if userInput1 == 1:
+        print('----- Administrative privileges given:.....')
+        while True:
+            print()
+            print('Choose an option:')
+            print('', '1. Create a new hall', '\n', '2. Logout')
+            print()
+            userInput2 = int(input('Your selection: '))
+
+            if userInput2 == 1:
+                previousHallCount = len(StarCinema.hall_list)
+                hallNumber = int(input('Choose a hall number: '))
+
+                hall_exists = any(hall.hall_no == hallNumber for hall in StarCinema.hall_list)
+                if hall_exists is True:
+                    print(f'Hall number {hallNumber} already exists.')
+
+                else:
+                    hallRows = int(input('How many rows of seats you want to construct: '))
+                    hallColumns = int(input('How many columns of seats you want to construct: '))
+                    hallObject = Hall(hallRows, hallColumns, hallNumber)
+                    newHallCount = len(StarCinema.hall_list)
+                    if previousHallCount + 1 == newHallCount:
+                        print(f'Hall {hallNumber} consisting {hallRows} rows and {hallColumns} columns is successful.')
+                        print()
+                    continue
+
+            elif userInput2 == 2:
+                print('Logged out from Administrative privileges.')
+                break
+
+            else:
+                print('Invalid option. Try again.')
 
 
+    elif userInput1 == 2:
+        print('----- Hall Supervisory privileges given:.....')
+        totalHall = len(StarCinema.hall_list)
+        if totalHall == 0:
+            print('No hall exists. Please get administrative privileges and add a hall.')
+        else:
+            print('Currently available hall list:')
+            for hall in StarCinema.hall_list:
+                print(f'Hall No: {hall.hall_no}')
+            chosenHall = int(input('Choose a hall to get the access: '))
+
+            hall_exists = any(hall.hall_no == chosenHall for hall in StarCinema.hall_list)
+            if hall_exists is False:
+                print(f'Hall number {chosenHall} not exists.')
+                continue
+            else:
+                while True:
+                    print()
+                    print('Choose an option:')
+                    print('', '1. Complete show list with schedule', '\n', '2. Enter a new show to a hall', '\n', '3. Available seats of a show', '\n', '4. Book a seat for a show', '\n', '5. Logout')
+                    print()
+                    userInput3 = int(input('Your selection: '))
+
+                    if userInput3 == 1:
+                        print('Complete show list with schedule')
+
+                    elif userInput3 == 2:
+                        print('Enter a new show to a hall')
+
+                    elif userInput3 == 3:
+                        print('Available seats of a show')
+
+                    elif userInput3 == 4:
+                        print('Book a seat for a show')
+
+                    elif userInput3 == 5:
+                        print('Logged out from Hall Supervisory privileges.')
+                        break
+
+                    else:
+                        print('Invalid option. Try again.')
+
+    elif userInput1 == 3:
+        print('Show counter  functions')
+
+    elif userInput1 == 4:
+        print('Logged out successfully.')
+        sys.exit()
+
+    else:
+        print('Invalid option. Try again.')
+
+
+
+
+
+
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+"""
 #Creating a cinema hall building. The name is CineStar.
 cinestar = StarCinema()
 
@@ -181,3 +288,4 @@ counter.book_ticket(2956, 5, 10)
 counter.view_available_seats(2956)
 
 #-----------------------------------------------------------------------------------------------------------------------
+"""
