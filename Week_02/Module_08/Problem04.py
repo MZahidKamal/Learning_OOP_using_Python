@@ -41,7 +41,7 @@ class Hall(StarCinema):
         if desired_show_id not in self.seats:
             print(f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.')
         else:
-            if desired_row <= 0 or desired_row > self.rows or desired_column <= 0 or desired_column > self.columns:
+            if (desired_row <= 0 or desired_row > self.rows) or (desired_column <= 0 or desired_column > self.columns):
                 print(f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.')
             elif self.seats[desired_show_id][desired_row][desired_column] != 'Free':
                 print(f'Seat at row {desired_row} column {desired_column} is already booked. Please choose another seat.')
