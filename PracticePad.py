@@ -1,6 +1,5 @@
 import sys
 
-
 class StarCinema:
     hall_list = []
     counter_list = []
@@ -48,8 +47,6 @@ class Counter(StarCinema):
 
             else:
                 self.seats[desired_show_id][desired_row-1][desired_column-1] = 'Booked'
-                print(f'Seat at row {desired_row} column {desired_column} is booked successfully. Have a nice showtime.')
-        return
 
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -89,7 +86,6 @@ class Hall(StarCinema):
         if not show_exist:
             print(f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.')
         else:
-            print(type(desired_row))
             if (desired_row <= 0 or desired_row > self.rows) or (desired_column <= 0 or desired_column > self.columns):
                 print(f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.')
 
@@ -114,10 +110,10 @@ class Hall(StarCinema):
             for seat_matrix in self.seats[desired_show_id]:
                 print(seat_matrix, end="\n")
 
+#-----------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
 
-#-----------------------------------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------------------------------------------------------
-#-----------------------------------------------------------------------------------------------------------------------
 
 #Adding some hard coded halls by default, including some shows in each hall.
 hall_101 = Hall(12, 20, 101)
@@ -139,6 +135,7 @@ hall_103.entry_show('1994', 'The Shawshank Redemption', '16:00', 103)
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 
+
 print()
 print('Hello. Welcome to Star Cinema Complex.')
 while True:
@@ -150,6 +147,7 @@ while True:
 
     if userInput1 == 1:
         print('----- Administrative privileges given:.....')
+
         while True:
             print()
             print('Choose an option:')
@@ -237,9 +235,9 @@ while True:
 
                     elif userInput3 == 4:
                         print('Book a seat for a show')
-                        show_id = int(input('Provide show ID: '))
-                        desired_row = input('Row of your preferred seat: ')
-                        desired_column = input('Column of your preferred seat: ')
+                        show_id = input('Provide show ID: ')
+                        desired_row = int(input('Row of your preferred seat: '))
+                        desired_column = int(input('Column of your preferred seat: '))
                         chosenHallObject.book_seat(show_id, desired_row, desired_column)
 
                     elif userInput3 == 5:
@@ -251,7 +249,48 @@ while True:
 
 
     elif userInput1 == 3:
-        print('Show counter  functions')
+        counter = Counter()
+        print('----- Counter Managerial privileges given:.....')
+        while True:
+            print()
+            print('Choose an option:')
+            print('', '1. Complete show list of all hall', '\n', '2. Available seats of a show', '\n', '3. Book a ticket for a show', '\n', '4. Logout')
+            print()
+            userInput4 = int(input('Your selection: '))
+
+            if userInput4 == 1:
+                print('Complete show list of this hall')
+                for show in StarCinema.show_list:
+                    print(f'Hall No: {show[3]},     ID: {show[0]},    Show Time: {show[2]},     Name: {show[1]}')
+
+            elif userInput4 == 2:
+                print('Available seats of a show')
+                show_id = input('Provide show ID: ')
+                print()
+                counter.view_available_seats(show_id)
+
+            elif userInput4 == 3:
+                print('Book a seat for a show')
+                show_id = input('Provide show ID: ')
+                desired_row = int(input('Row of your preferred seat: '))
+                desired_column = int(input('Column of your preferred seat: '))
+                counter.book_ticket(show_id, desired_row, desired_column)
+
+                desired_hall_No = 0
+                for show in StarCinema.show_list:
+                    if show_id == show[0]:
+                        desired_hall_No = show[3]
+
+                print(f'Ticket booking successful.')
+                print(f'Hall No: {desired_hall_No}, Seat at R{desired_row}C{desired_column} is booked successfully.')
+                print(f'Have a nice showtime.')
+
+            elif userInput4 == 4:
+                print('Logged out from Counter Managerial privileges.')
+                break
+
+            else:
+                print('Invalid option. Try again.')
 
 
     elif userInput1 == 4:
@@ -263,85 +302,4 @@ while True:
         print('Invalid option. Try again.')
 
 
-
-
-
-
-
-
 #-----------------------------------------------------------------------------------------------------------------------
-"""
-#Creating a cinema hall building. The name is CineStar.
-cinestar = StarCinema()
-
-#Creating a cinema hall named dolby_hall_01. Because of inheriting the Hall class from the StarCinema, and using the
-#initializer of the StarCinema class, as soon as a hall object is created, it'll automatically be added in the list.
-dolby_hall_11 = Hall(12, 20, 11)
-
-#To check, let's print the length of the list. If the size is increased by 1, then insertion is successful.
-print(len(cinestar.hall_list))
-
-#-----------------------------------------------------------------------------------------------------------------------
-
-#A new method 'entry_show' is created under the class Hall. Then a show is entered using that function.
-dolby_hall_11.entry_show(2956, 'Prison Break', '18:00')
-
-#To check, let's print the length of the list. If the size is increased by 1, then insertion is successful.
-print(len(dolby_hall_11.show_list))
-
-#Also creating a 2D matrix of rows and columns, and initializing all cells of the 2D matrix with 'Free'. Naming it
-#'seat_matrix', putting it into the seats dictionary as KEY = show_id and VALUE = seat_matrix. As soon as a show is
-#entered, a seat matrix, with all free seats, will be associated with the show id number.
-
-#To check, let's print the length of the list. If the size is increased by 1, then insertion is successful.
-print(len(dolby_hall_11.seats))
-
-#-----------------------------------------------------------------------------------------------------------------------
-
-#Now creating another method 'book_seat', under the class Hall. It takes a desired show ID number, a desired seat's row
-#and column number, and book the seat for the show if available.
-
-#Let's see the output.
-print()
-dolby_hall_11.book_seat(2956, 2, 13)
-
-#-----------------------------------------------------------------------------------------------------------------------
-
-#Now creating another method 'view_show_list', under the class Hall. It takes no argument, but return the complete list
-#of a show running in this hall.
-
-#Let's see the output.
-print()
-dolby_hall_11.view_show_list()
-
-#-----------------------------------------------------------------------------------------------------------------------
-
-#Now creating another method 'view_available_seats', under the class Hall. It takes the show id number as argument, and
-#return the complete seat plan of the show in this hall.
-
-#Let's see the output.
-print()
-dolby_hall_11.view_available_seats(2956)
-
-#-----------------------------------------------------------------------------------------------------------------------
-
-#Now creating another class 'Counter'. It will take not argument, but can create an object.
-counter = Counter()
-print()
-print(len(cinestar.counter_list))
-
-#Some more tests and outputs.
-print(len(counter.hall_list))
-print(len(counter.show_list))
-
-#Accessing the show list and the available seats from the counter.
-counter.view_show_list()
-counter.view_available_seats(2956)
-
-#Booking a ticket from the counter.
-print()
-counter.book_ticket(2956, 5, 10)
-counter.view_available_seats(2956)
-
-#-----------------------------------------------------------------------------------------------------------------------
-"""
