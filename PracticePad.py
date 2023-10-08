@@ -89,6 +89,7 @@ class Hall(StarCinema):
         if not show_exist:
             print(f'Show ID {desired_show_id} is invalid. Provide a valid show ID, please.')
         else:
+            print(type(desired_row))
             if (desired_row <= 0 or desired_row > self.rows) or (desired_column <= 0 or desired_column > self.columns):
                 print(f'Seat at row {desired_row} column {desired_column} is not existed. Please choose a valid seat.')
 
@@ -184,31 +185,32 @@ while True:
 
     elif userInput1 == 2:
         print('----- Hall Supervisory privileges given:.....')
+
         totalHall = len(StarCinema.hall_list)
         if totalHall == 0:
             print('No hall exists. Please get administrative privileges and add a hall.')
+
         else:
-            print()
-            print('----- Currently available hall list: -----')
+            print('Currently available hall list:')
             for hall in StarCinema.hall_list:
                 print(f'Hall ID: {hall.hall_no}: Total available seats: {hall.rows * hall.columns}.')
+
             chosenHallNumber = int(input('Choose a hall to get the access: '))
 
-            hall_exists = False
-            chosenHallObject = None
-            any(hall.hall_no == chosenHallNumber for hall in StarCinema.hall_list)
-            for hall in StarCinema.hall_list:
-                if hall.hall_no == chosenHallNumber:
-                    hall_exists = True
-                    chosenHallObject = hall
-
+            hall_exists = any(hall.hall_no == chosenHallNumber for hall in StarCinema.hall_list)
             if hall_exists is False:
                 print(f'Hall number {chosenHallNumber} not exists.')
                 continue
+
             else:
+                chosenHallObject = None
+                for hall in StarCinema.hall_list:
+                    if hall.hall_no == chosenHallNumber:
+                        chosenHallObject = hall
+
                 while True:
                     print()
-                    print('----- Choose an option: -----')
+                    print('Choose an option:')
                     print('', '1. Complete show list of this hall', '\n', '2. Enter a new show to this hall', '\n', '3. Available seats of a show', '\n', '4. Book a seat for a show', '\n', '5. Logout')
                     print()
                     userInput3 = int(input('Your selection: '))
@@ -220,19 +222,21 @@ while True:
                                 print(f'ID: {show[0]},    Name: {show[1]},      Start Time: {show[2]}')
 
                     elif userInput3 == 2:
-                        show_id = int(input('Provide show ID: '))
+                        show_id = input('Provide show ID: ')
                         show_name = input('Provide show Name: ')
                         show_time = input('Provide show Time: ')
                         chosenHallObject.entry_show(show_id, show_name, show_time, chosenHallNumber)
                         print(
-                            f'Show "{show_name}" with ID {show_id} added to Hall {chosenHallNumber} at {show_time} o\'clock.')
+                            f'Show "{show_name}" with ID {show_id} added to Hall {chosenHallObject.hall_no} at {show_time} o\'clock.')
 
                     elif userInput3 == 3:
+                        print('Available seats of a show')
                         show_id = input('Provide show ID: ')
                         print()
                         chosenHallObject.view_available_seats(show_id)
 
                     elif userInput3 == 4:
+                        print('Book a seat for a show')
                         show_id = int(input('Provide show ID: '))
                         desired_row = input('Row of your preferred seat: ')
                         desired_column = input('Column of your preferred seat: ')
@@ -245,16 +249,18 @@ while True:
                     else:
                         print('Invalid option. Try again.')
 
+
     elif userInput1 == 3:
         print('Show counter  functions')
+
 
     elif userInput1 == 4:
         print('Logged out successfully.')
         sys.exit()
 
+
     else:
         print('Invalid option. Try again.')
-
 
 
 
