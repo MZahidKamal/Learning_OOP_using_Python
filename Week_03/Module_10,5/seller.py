@@ -1,4 +1,5 @@
 from eshop import EShop
+#from product import Product
 
 class Seller:
     sellers = []
@@ -25,6 +26,11 @@ class Seller:
                 print('Seller Name: ', seller['sel_name'], '\nEmail: ', seller['sel_email'], '\nBalance: ',
                       seller['sel_wallet'], '€')
 
+
+    # def upload_sel_product(self, sel_email, sel_password, pro_name, pro_price, pro_description, pro_stock_quantity):
+    #     for seller in Seller.sellers:
+    #         if seller['sel_email'] == sel_email and seller['sel_password'] == sel_password:
+    #             Product.upload_product(sel_email, sel_password, pro_name, pro_price, pro_description, pro_stock_quantity)
 
     @staticmethod
     def remove_seller(sel_email, sel_password):
