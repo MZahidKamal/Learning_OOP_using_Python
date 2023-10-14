@@ -3,6 +3,7 @@ from bank import Bank
 
 class CurrentAccount:
     AllCurrentAccounts = []
+    MaxLoanPerAccount = 50000
 
     def __init__(self, name, dob, road, house_no, zip_code, city, email):
         if Bank.Banking_Service_Controller:
@@ -17,7 +18,10 @@ class CurrentAccount:
                 'Email': email,
                 'AccountType': 'Current Account',
                 'AccountNumber': self.AccountNumber,
-                'CurrentBalance': 0
+                'CurrentBalance': 0,
+                'LoanApplicationToBeGranted': 2,
+                'MaxLoanLimit': self.MaxLoanPerAccount,
+                'LoanTaken': 0
             }
             CurrentAccount.AllCurrentAccounts.append(account)
             Bank.AllAccounts.append(account)
@@ -103,6 +107,33 @@ class CurrentAccount:
                             print(f'Account {target_account_number} does not exist.')
                 else:
                     print(f'Account {your_account_number} does not exist.')
+        else:
+            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
+
+    @staticmethod
+    def apply_loan(account_number, expected_loan_amount):
+        if Bank.Banking_Service_Controller:
+            for account in CurrentAccount.AllCurrentAccounts:
+                if account['AccountNumber'] == account_number:
+                    if expected_loan_amount > 0:
+                        if expected_loan_amount <= account['MaxLoanLimit']:
+                            if account['LoanApplicationToBeGranted'] != 0:
+                                if account['CurrentBalance'] != 0:
+                                    account['CurrentBalance'] += expected_loan_amount
+                                    account['LoanTaken'] += expected_loan_amount
+                                    account['MaxLoanLimit'] -= expected_loan_amount
+                                    account['LoanApplicationToBeGranted'] -= 1
+                                    Bank.TotalLoanTaken += expected_loan_amount
+                                    Bank.TotalBankBalance += expected_loan_amount
+                                    print(f'Loan approved, Cash {expected_loan_amount}€ is credited to your account.')                                                                           # Add to transaction history
+                                else:
+                                    print('Empty accounts are not eligible for loan application. To apply for loan, you must deposit an amount.')
+                        else:
+                            print('Max Loan Limit amount exceeded.')
+                    else:
+                        print('Invalid Amount.')
+                else:
+                    print(f'Account {account_number} does not exist.')
         else:
             print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
 

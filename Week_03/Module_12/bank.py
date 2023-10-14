@@ -3,7 +3,6 @@ class Bank:
     TotalBankBalance = 0
     TotalLoanTaken = 0
     Banking_Service_Controller = True
-    LoanController = True
 
 
     def __init__(self, name, road, house_no, zip_code, city, state, country, url):
@@ -23,5 +22,4 @@ class Bank:
 
     def declare_bankrupt(self):
         self.Banking_Service_Controller = False
-        self.LoanController = False
         print(f'{self.Name} declared bankruptcies. Any kind of public service/transactions are discouraged.')
