@@ -1,8 +1,10 @@
 import random
 from bank import Bank
+from transaction import Transaction
 
 class SavingsAccount:
     AllSavingAccounts = []
+    TransactionHistory = []
 
     def __init__(self, name, dob, road, house_no, zip_code, city, email):
         if Bank.Banking_Service_Controller:
@@ -34,6 +36,20 @@ class SavingsAccount:
                 return new_acc_no
 
     @staticmethod
+    def account_info(account_number):
+        for account in SavingsAccount.AllSavingAccounts:
+            if account['AccountNumber'] == account_number:
+                print('----- Account Information -----')
+                print('Account Name: ', account['Name'])
+                print('Date of Birth: ', account['DateOfBirth'])
+                print('Address: ', account['Road'], account['HouseNo'], account['ZIPCode'], account['City'])
+                print('Email Address: ', account['Email'])
+                print('Account Type: ', account['AccountType'])
+                print('Account Number: ', account['AccountNumber'])
+            else:
+                print(f'Account {account_number} does not exist.')
+
+    @staticmethod
     def deposit_money(account_number, deposit_amount):
         if Bank.Banking_Service_Controller:
             for account in SavingsAccount.AllSavingAccounts:
@@ -41,7 +57,8 @@ class SavingsAccount:
                     if deposit_amount > 0:
                         account['CurrentBalance'] += deposit_amount
                         Bank.TotalBankBalance += deposit_amount
-                        print(f'Successfully deposited {deposit_amount}€.')                     # Add to transaction history
+                        SavingsAccount.TransactionHistory.append(Transaction.record(account_number, 'Deposit Money', deposit_amount))
+                        print(f'Successfully deposited {deposit_amount}€.')
                     else:
                         print('Invalid Amount.')
                 else:
@@ -58,6 +75,7 @@ class SavingsAccount:
                         if expected_amount <= account['CurrentBalance']:
                             account['CurrentBalance'] -= expected_amount
                             Bank.TotalBankBalance -= expected_amount
+                            SavingsAccount.TransactionHistory.append(Transaction.record(account_number, 'Withdraw Money', expected_amount))
                             print(f'Withdrawal successful, Cash out {expected_amount}€.')       # Add to transaction history
                         else:
                             print('Withdrawal amount exceeded.')
@@ -94,6 +112,7 @@ class SavingsAccount:
                                 if target_amount <= sv_account['CurrentBalance']:
                                     sv_account['CurrentBalance'] -= target_amount
                                     account['CurrentBalance'] += target_amount
+                                    SavingsAccount.TransactionHistory.append(Transaction.record(your_account_number, 'Transfer Money', target_amount))
                                     print(f'Transfer {target_amount}€, from account {sv_account} to {account} is successful.')  # Add to transaction history
                                 else:
                                     print('Transfer amount exceeded.')
@@ -109,6 +128,7 @@ class SavingsAccount:
 # (done) deposit
 # (done) withdraw / handle error with “Withdrawal amount exceeded” / only withdraw money from his account if he has money in his account
 # (done) check available balance
-# check transaction history
+# show account information
+# (done) check transaction history
 # (done) money transfer / handle error with “Account does not exist” / only transfer money from his account if he has money in his account
 # (done) If a user is unable to withdraw the amount of money he has deposited in the bank, he will get a message that the bank is bankrupt.

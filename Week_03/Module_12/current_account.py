@@ -38,6 +38,20 @@ class CurrentAccount:
                 return new_acc_no
 
     @staticmethod
+    def account_info(account_number):
+        for account in CurrentAccount.AllCurrentAccounts:
+            if account['AccountNumber'] == account_number:
+                print('----- Account Information -----')
+                print('Account Name: ', account['Name'])
+                print('Date of Birth: ', account['DateOfBirth'])
+                print('Address: ', account['Road'], account['HouseNo'], account['ZIPCode'], account['City'])
+                print('Email Address: ', account['Email'])
+                print('Account Type: ', account['AccountType'])
+                print('Account Number: ', account['AccountNumber'])
+            else:
+                print(f'Account {account_number} does not exist.')
+
+    @staticmethod
     def deposit_money(account_number, deposit_amount):
         if Bank.Banking_Service_Controller:
             for account in CurrentAccount.AllCurrentAccounts:
@@ -140,6 +154,7 @@ class CurrentAccount:
 # (done) deposit
 # (done) withdraw / handle error with “Withdrawal amount exceeded” / only withdraw money from his account if he has money in his account
 # (done) check available balance
+# show account information
 # check transaction history
 # (done) money transfer / handle error with “Account does not exist” / only transfer money from his account if he has money in his account
 # (done) If a user is unable to withdraw the amount of money he has deposited in the bank, he will get a message that the bank is bankrupt.
