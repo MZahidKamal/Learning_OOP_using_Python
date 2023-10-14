@@ -1,5 +1,7 @@
 class Bank:
     AllAccounts = []
+    AllSavingAccounts = []
+    AllCurrentAccounts = []
     TotalBankBalance = 0
     TotalLoanTaken = 0
     Banking_Service_Controller = True
@@ -17,16 +19,24 @@ class Bank:
 
 
     def bank_info(self):
-        print(f'----- Bank Information -----\n{self.Name}\n{self.Road} {self.HouseNo}\n{self.ZIPCode} {self.City}\n{self.State} {self.Country}\n{self.Website}')
+        print(f'\n----- Bank Information -----\n{self.Name}\n{self.Road} {self.HouseNo}\n{self.ZIPCode} {self.City}\n{self.State} {self.Country}\n{self.Website}')
 
 
     def declare_bankrupt(self):
         self.Banking_Service_Controller = False
         print(f'{self.Name} declared bankruptcies. Any kind of public service/transactions are discouraged.')
 
+    def delete_account(self, target_account_number):
+        for account in self.AllAccounts:
+            if account['AccountNumber'] == target_account_number:
+                if account['AccountType'] == 'Savings Account':
+                    balance = account['CurrentBalance']
+                    self.AllAccounts.remove(account)
+                    if balance > 0:
+                        print(f'Successfully removed account {target_account_number}.')
+                    else:
+                        print(f'Successfully removed account {target_account_number}.')
 
-
-# Can create an account
 # Can delete any user account
 # Can see all user accounts list
 # Can check the total available balance of the bank

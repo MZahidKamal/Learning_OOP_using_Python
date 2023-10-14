@@ -3,7 +3,7 @@ from bank import Bank
 from transaction import Transaction
 
 class SavingsAccount:
-    AllSavingAccounts = []
+    AllSavingAccounts = Bank.AllSavingAccounts.copy()
     TransactionHistory = []
 
     def __init__(self, name, dob, road, house_no, zip_code, city, email):

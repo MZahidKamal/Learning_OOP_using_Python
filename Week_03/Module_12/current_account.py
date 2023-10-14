@@ -3,7 +3,7 @@ from bank import Bank
 from transaction import Transaction
 
 class CurrentAccount:
-    AllCurrentAccounts = []
+    AllCurrentAccounts = Bank.AllCurrentAccounts.copy()
     MaxLoanPerAccount = 50000
     TransactionHistory = []
 
