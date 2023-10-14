@@ -1,9 +1,11 @@
 import random
 from bank import Bank
+from transaction import Transaction
 
 class CurrentAccount:
     AllCurrentAccounts = []
     MaxLoanPerAccount = 50000
+    TransactionHistory = []
 
     def __init__(self, name, dob, road, house_no, zip_code, city, email):
         if Bank.Banking_Service_Controller:
@@ -59,7 +61,8 @@ class CurrentAccount:
                     if deposit_amount > 0:
                         account['CurrentBalance'] += deposit_amount
                         Bank.TotalBankBalance += deposit_amount
-                        print(f'Successfully deposited {deposit_amount}€.')                     # Add to transaction history
+                        CurrentAccount.TransactionHistory.append(Transaction.record(account_number, 'Deposit Money', deposit_amount))
+                        print(f'Successfully deposited {deposit_amount}€.')
                     else:
                         print('Invalid Amount.')
                 else:
@@ -76,7 +79,8 @@ class CurrentAccount:
                         if expected_amount <= account['CurrentBalance']:
                             account['CurrentBalance'] -= expected_amount
                             Bank.TotalBankBalance -= expected_amount
-                            print(f'Withdrawal successful, Cash out {expected_amount}€.')       # Add to transaction history
+                            CurrentAccount.TransactionHistory.append(Transaction.record(account_number, 'Withdraw Money', expected_amount))
+                            print(f'Withdrawal successful, Cash out {expected_amount}€.')
                         else:
                             print('Withdrawal amount exceeded.')
                     else:
@@ -112,7 +116,8 @@ class CurrentAccount:
                                 if target_amount <= cr_account['CurrentBalance']:
                                     cr_account['CurrentBalance'] -= target_amount
                                     account['CurrentBalance'] += target_amount
-                                    print(f'Transfer {target_amount}€, from account {cr_account} to {account} is successful.')  # Add to transaction history
+                                    CurrentAccount.TransactionHistory.append(Transaction.record(your_account_number, 'Transfer Money', target_amount))
+                                    print(f'Transfer {target_amount}€, from account {cr_account} to {account} is successful.')
                                 else:
                                     print('Transfer amount exceeded.')
                             else:
@@ -139,6 +144,7 @@ class CurrentAccount:
                                     account['LoanApplicationToBeGranted'] -= 1
                                     Bank.TotalLoanTaken += expected_loan_amount
                                     Bank.TotalBankBalance += expected_loan_amount
+                                    CurrentAccount.TransactionHistory.append(Transaction.record(account_number, 'Loan Money', expected_loan_amount))
                                     print(f'Loan approved, Cash {expected_loan_amount}€ is credited to your account.')                                                                           # Add to transaction history
                                 else:
                                     print('Empty accounts are not eligible for loan application. To apply for loan, you must deposit an amount.')
@@ -150,11 +156,3 @@ class CurrentAccount:
                     print(f'Account {account_number} does not exist.')
         else:
             print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
-
-# (done) deposit
-# (done) withdraw / handle error with “Withdrawal amount exceeded” / only withdraw money from his account if he has money in his account
-# (done) check available balance
-# show account information
-# check transaction history
-# (done) money transfer / handle error with “Account does not exist” / only transfer money from his account if he has money in his account
-# (done) If a user is unable to withdraw the amount of money he has deposited in the bank, he will get a message that the bank is bankrupt.

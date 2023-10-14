@@ -76,7 +76,7 @@ class SavingsAccount:
                             account['CurrentBalance'] -= expected_amount
                             Bank.TotalBankBalance -= expected_amount
                             SavingsAccount.TransactionHistory.append(Transaction.record(account_number, 'Withdraw Money', expected_amount))
-                            print(f'Withdrawal successful, Cash out {expected_amount}€.')       # Add to transaction history
+                            print(f'Withdrawal successful, Cash out {expected_amount}€.')
                         else:
                             print('Withdrawal amount exceeded.')
                     else:
@@ -113,7 +113,7 @@ class SavingsAccount:
                                     sv_account['CurrentBalance'] -= target_amount
                                     account['CurrentBalance'] += target_amount
                                     SavingsAccount.TransactionHistory.append(Transaction.record(your_account_number, 'Transfer Money', target_amount))
-                                    print(f'Transfer {target_amount}€, from account {sv_account} to {account} is successful.')  # Add to transaction history
+                                    print(f'Transfer {target_amount}€, from account {sv_account} to {account} is successful.')
                                 else:
                                     print('Transfer amount exceeded.')
                             else:
@@ -124,11 +124,3 @@ class SavingsAccount:
                     print(f'Account {your_account_number} does not exist.')
         else:
             print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
-
-# (done) deposit
-# (done) withdraw / handle error with “Withdrawal amount exceeded” / only withdraw money from his account if he has money in his account
-# (done) check available balance
-# show account information
-# (done) check transaction history
-# (done) money transfer / handle error with “Account does not exist” / only transfer money from his account if he has money in his account
-# (done) If a user is unable to withdraw the amount of money he has deposited in the bank, he will get a message that the bank is bankrupt.

@@ -23,3 +23,12 @@ class Bank:
     def declare_bankrupt(self):
         self.Banking_Service_Controller = False
         print(f'{self.Name} declared bankruptcies. Any kind of public service/transactions are discouraged.')
+
+
+
+# Can create an account
+# Can delete any user account
+# Can see all user accounts list
+# Can check the total available balance of the bank
+# Can check the total loan amount
+# Can on or off the loan feature of the bank.
