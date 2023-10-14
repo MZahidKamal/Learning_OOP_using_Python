@@ -2,7 +2,7 @@ class Bank:
     AllAccounts = []
     TotalBankBalance = 0
     TotalLoanTaken = 0
-    WithdrawController = True
+    Banking_Service_Controller = True
     LoanController = True
 
 
@@ -22,6 +22,6 @@ class Bank:
 
 
     def declare_bankrupt(self):
-        self.WithdrawController = False
+        self.Banking_Service_Controller = False
         self.LoanController = False
-        print(f'{self.Name} bank declared bankruptcies. Any kind of public transactions are discouraged.')
+        print(f'{self.Name} declared bankruptcies. Any kind of public service/transactions are discouraged.')
