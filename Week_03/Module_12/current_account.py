@@ -6,7 +6,7 @@ class CurrentAccount:
 
     def __init__(self, name, dob, road, house_no, zip_code, city, email):
         if Bank.Banking_Service_Controller:
-            self.AccountNumber = CurrentAccount.generate_savings_acc_no()
+            self.AccountNumber = CurrentAccount.generate_current_acc_no()
             account = {
                 'Name': name,
                 'DateOfBirth': dob,
@@ -15,7 +15,7 @@ class CurrentAccount:
                 'ZIPCode': zip_code,
                 'City': city,
                 'Email': email,
-                'AccountType': 'Saving Account',
+                'AccountType': 'Current Account',
                 'AccountNumber': self.AccountNumber,
                 'CurrentBalance': 0
             }
@@ -26,11 +26,11 @@ class CurrentAccount:
             print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
 
     @staticmethod
-    def generate_savings_acc_no():
+    def generate_current_acc_no():
         while True:
-            new_acc_no = random.randrange(100, 1000)
+            new_acc_no = random.randrange(1000, 10000)
             if new_acc_no not in CurrentAccount.AllCurrentAccounts:
-                new_acc_no = 'SV' + str(new_acc_no)
+                new_acc_no = 'CR' + str(new_acc_no)
                 return new_acc_no
 
     @staticmethod
@@ -86,15 +86,15 @@ class CurrentAccount:
     @staticmethod
     def transfer_money(your_account_number, target_account_number, target_amount):
         if Bank.Banking_Service_Controller:
-            for sv_account in CurrentAccount.AllCurrentAccounts:
-                if sv_account['AccountNumber'] == your_account_number:
+            for cr_account in CurrentAccount.AllCurrentAccounts:
+                if cr_account['AccountNumber'] == your_account_number:
                     for account in Bank.AllAccounts:
                         if account['AccountNumber'] == target_account_number:
                             if target_amount > 0:
-                                if target_amount <= sv_account['CurrentBalance']:
-                                    sv_account['CurrentBalance'] -= target_amount
+                                if target_amount <= cr_account['CurrentBalance']:
+                                    cr_account['CurrentBalance'] -= target_amount
                                     account['CurrentBalance'] += target_amount
-                                    print(f'Transfer {target_amount}€, from account {sv_account} to {account} is successful.')  # Add to transaction history
+                                    print(f'Transfer {target_amount}€, from account {cr_account} to {account} is successful.')  # Add to transaction history
                                 else:
                                     print('Transfer amount exceeded.')
                             else:

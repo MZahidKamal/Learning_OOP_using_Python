@@ -1,9 +1,8 @@
-"""
 import random
 from bank import Bank
 
 class SavingsAccount:
-    AllSavingAccountNumbers = []
+    AllSavingAccounts = []
 
     def __init__(self, name, dob, road, house_no, zip_code, city, email):
         if Bank.Banking_Service_Controller:
@@ -16,11 +15,11 @@ class SavingsAccount:
                 'ZIPCode': zip_code,
                 'City': city,
                 'Email': email,
-                'AccountType': 'Saving Account',
+                'AccountType': 'Savings Account',
                 'AccountNumber': self.AccountNumber,
                 'CurrentBalance': 0
             }
-            SavingsAccount.AllSavingAccountNumbers.append(account)
+            SavingsAccount.AllSavingAccounts.append(account)
             Bank.AllAccounts.append(account)
             print(f'Successfully created account {self.AccountNumber}, for {name}.')
         else:
@@ -30,14 +29,14 @@ class SavingsAccount:
     def generate_savings_acc_no():
         while True:
             new_acc_no = random.randrange(100, 1000)
-            if new_acc_no not in SavingsAccount.AllSavingAccountNumbers:
+            if new_acc_no not in SavingsAccount.AllSavingAccounts:
                 new_acc_no = 'SV' + str(new_acc_no)
                 return new_acc_no
 
     @staticmethod
     def deposit_money(account_number, deposit_amount):
         if Bank.Banking_Service_Controller:
-            for account in SavingsAccount.AllSavingAccountNumbers:
+            for account in SavingsAccount.AllSavingAccounts:
                 if account['AccountNumber'] == account_number:
                     if deposit_amount > 0:
                         account['CurrentBalance'] += deposit_amount
@@ -53,7 +52,7 @@ class SavingsAccount:
     @staticmethod
     def withdraw_money(account_number, expected_amount):
         if Bank.Banking_Service_Controller:
-            for account in SavingsAccount.AllSavingAccountNumbers:
+            for account in SavingsAccount.AllSavingAccounts:
                 if account['AccountNumber'] == account_number:
                     if expected_amount > 0:
                         if expected_amount <= account['CurrentBalance']:
@@ -72,7 +71,7 @@ class SavingsAccount:
     @staticmethod
     def check_balance(account_number):
         if Bank.Banking_Service_Controller:
-            for account in SavingsAccount.AllSavingAccountNumbers:
+            for account in SavingsAccount.AllSavingAccounts:
                 if account['AccountNumber'] == account_number:
                     current_balance = account['CurrentBalance']
                     if current_balance == 0:
@@ -87,7 +86,7 @@ class SavingsAccount:
     @staticmethod
     def transfer_money(your_account_number, target_account_number, target_amount):
         if Bank.Banking_Service_Controller:
-            for sv_account in SavingsAccount.AllSavingAccountNumbers:
+            for sv_account in SavingsAccount.AllSavingAccounts:
                 if sv_account['AccountNumber'] == your_account_number:
                     for account in Bank.AllAccounts:
                         if account['AccountNumber'] == target_account_number:
@@ -113,4 +112,3 @@ class SavingsAccount:
 # check transaction history
 # (done) money transfer / handle error with “Account does not exist” / only transfer money from his account if he has money in his account
 # (done) If a user is unable to withdraw the amount of money he has deposited in the bank, he will get a message that the bank is bankrupt.
-"""
