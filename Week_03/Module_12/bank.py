@@ -69,13 +69,14 @@ class Bank:
         else:
             print(f'Account {target_account_number} does not exist.')
 
-    def loan_feature_controller(self, decision):
+    @classmethod
+    def loan_feature_controller(cls, decision):
         if decision == 'ON':
-            self.Loan_Feature_Controller = True
-            print(f'{self.Name} has launched the loan feature. Therefore applications can be submitted.')
+            cls.Loan_Feature_Controller = True
+            print(f'The bank has launched the loan feature. Therefore applications can be submitted.')
         elif decision == 'OFF':
-            self.Loan_Feature_Controller = False
-            print(f'{self.Name} discontinued the loan feature. Therefore no application will be granted.')
+            cls.Loan_Feature_Controller = False
+            print(f'The bank has discontinued the loan feature. Therefore no application will be granted.')
 
     @classmethod
     def declare_bankruptcy(cls):
