@@ -179,7 +179,7 @@ def main():
 
                 elif user_input == 3:
                     account_number = input('\nEnter your account number: ')
-                    deposit_amount = input('\nHow much you want to deposit: ')
+                    deposit_amount = int(input('\nHow much you want to deposit: '))
 
                     if account_number[:2] == 'SV':
                         SavingsAccount.deposit_money(account_number, deposit_amount)
@@ -190,7 +190,7 @@ def main():
 
                 elif user_input == 4:
                     account_number = input('\nEnter your account number: ')
-                    desire_amount = input('\nHow much you want to deposit: ')
+                    desire_amount = int(input('\nHow much you want to withdraw: '))
 
                     if account_number[:2] == 'SV':
                         SavingsAccount.withdraw_money(account_number, desire_amount)
@@ -202,7 +202,7 @@ def main():
                 elif user_input == 5:
                     your_account_number = input('\nEnter your account number: ')
                     target_account_number = input('\nEnter beneficiary account number: ')
-                    transfer_amount = input('\nHow much you want to transfer: ')
+                    transfer_amount = int(input('\nHow much you want to transfer: '))
 
                     if your_account_number[:2] == 'SV':
                         SavingsAccount.transfer_money(your_account_number, target_account_number, transfer_amount)
@@ -213,7 +213,7 @@ def main():
 
                 elif user_input == 6:
                     account_number = input('\nEnter your account number: ')
-                    loan_amount = input('\nHow much you want to loan: ')
+                    loan_amount = int(input('\nHow much you want to loan: '))
 
                     if account_number[:2] == 'SV':
                         print('Loan feature is only available for Current accounts.')
@@ -227,34 +227,25 @@ def main():
                     if account_number[:2] == 'SV':
                         print('Loan feature is only available for Current accounts.')
                     elif account_number[:2] == 'CR':
+                        account_exists = False
                         for account in commerzbank.AllCurrentAccounts:
                             if account['AccountNumber'] == account_number:
+                                account_exists = True
                                 print('Currently total loan taken under your account is', account['LoanTaken'], '€')
-                            else:
-                                print(f'Account {account_number} does not exist.')
+                                continue
+                        if not account_exists:
+                            print(f'Account {account_number} does not exist.')
                     else:
                         print(f'Invalid account number.')
 
                 elif user_input == 8:
-                    print('Show Transaction History')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    account_number = input('\nEnter your account number: ')
+                    if account_number[:2] == 'SV':
+                        SavingsAccount.TransactionHistory(account_number)
+                    elif account_number[:2] == 'CR':
+                        CurrentAccount.TransactionHistory(account_number)
+                    else:
+                        print(f'Invalid account number.')
 
                 elif user_input == 9:
                     print('Logged out from User/Account Holder access.')

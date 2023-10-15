@@ -24,7 +24,7 @@ class SavingsAccount:
             Bank.AllAccounts.append(account)
             print(f'Successfully created account {self.AccountNumber}, for {name}.')
         else:
-            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
+            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')
 
     @staticmethod
     def generate_savings_acc_no():
@@ -45,8 +45,8 @@ class SavingsAccount:
                 print('Email Address: ', account['Email'])
                 print('Account Type: ', account['AccountType'])
                 print('Account Number: ', account['AccountNumber'])
-            else:
-                print(f'Account {account_number} does not exist.')
+                return
+        print(f'Account {account_number} does not exist.')
 
     @staticmethod
     def deposit_money(account_number, deposit_amount):
@@ -58,12 +58,13 @@ class SavingsAccount:
                         Bank.TotalBankBalance += deposit_amount
                         SavingsAccount.TransactionHistory.append(Transaction.record(account_number, 'Deposit Money', deposit_amount))
                         print(f'Successfully deposited {deposit_amount}€.')
+                        return
                     else:
                         print('Invalid Amount.')
-                else:
-                    print(f'Account {account_number} does not exist.')
+                        return
+            print(f'Account {account_number} does not exist.')
         else:
-            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
+            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')
 
     @staticmethod
     def withdraw_money(account_number, expected_amount):
@@ -76,14 +77,16 @@ class SavingsAccount:
                             Bank.TotalBankBalance -= expected_amount
                             SavingsAccount.TransactionHistory.append(Transaction.record(account_number, 'Withdraw Money', expected_amount))
                             print(f'Withdrawal successful, Cash out {expected_amount}€.')
+                            return
                         else:
                             print('Withdrawal amount exceeded.')
+                            return
                     else:
                         print('Invalid Amount.')
-                else:
-                    print(f'Account {account_number} does not exist.')
+                        return
+            print(f'Account {account_number} does not exist.')
         else:
-            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
+            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')
 
     @staticmethod
     def check_balance(account_number):
@@ -93,12 +96,13 @@ class SavingsAccount:
                     current_balance = account['CurrentBalance']
                     if current_balance == 0:
                         print('Currently your account is empty.')
+                        return
                     else:
                         print(f'Currently your balance is {current_balance}€')
-                else:
-                    print(f'Account {account_number} does not exist.')
+                        return
+            print(f'Account {account_number} does not exist.')
         else:
-            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
+            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')
 
     @staticmethod
     def transfer_money(your_account_number, target_account_number, target_amount):
@@ -113,13 +117,32 @@ class SavingsAccount:
                                     account['CurrentBalance'] += target_amount
                                     SavingsAccount.TransactionHistory.append(Transaction.record(your_account_number, 'Transfer Money', target_amount))
                                     print(f'Transfer {target_amount}€, from account {sv_account} to {account} is successful.')
+                                    return
                                 else:
                                     print('Transfer amount exceeded.')
+                                    return
                             else:
                                 print('Invalid Amount.')
-                        else:
-                            print(f'Account {target_account_number} does not exist.')
-                else:
-                    print(f'Account {your_account_number} does not exist.')
+                                return
+                    print(f'Account {target_account_number} does not exist.')
+            print(f'Account {your_account_number} does not exist.')
         else:
-            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discouraged.')
+            print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')
+
+    @staticmethod
+    def show_transaction_history(account_number):
+        if Bank.Banking_Service_Controller:
+            for account in Bank.AllSavingAccounts:
+                if account['AccountNumber'] == account_number:
+                    for transaction in SavingsAccount.TransactionHistory:
+                        print(f'Transaction History for {account_number}:')
+                        if transaction['AccountNo'] == account_number:
+                            print('Date/Time:', transaction['DateAndTime'], '\t', transaction['TransactionType'], '\t', transaction['Amount'], '€')
+                            return
+                        else:
+                            print(f'No transaction made so far.')
+                            return
+            print(f'Account {account_number} does not exist.')
+        else:
+            print(
+                f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')
