@@ -11,16 +11,10 @@ def main():
     SavingsAccount('Robert Bosch', 'Offenbach', 'robert@bosch.com')
     SavingsAccount('Alice Johnson', 'Springfield', 'alice@example.com')
     SavingsAccount('Bob Smith', 'Pleasant ville', 'bob@example.com')
-    SavingsAccount('Eva Davis', 'Sunset City', 'eva@example.com')
-    SavingsAccount('David Wilson', 'Bayside', 'david@example.com')
-    SavingsAccount('Sophia Lee', 'Hometown', 'sophia@example.com')
 
-    CurrentAccount('John Doe', 'Springfield', 'john@example.com')
     CurrentAccount('Jane Smith', 'Pleasant ville', 'jane@example.com')
     CurrentAccount('Michael Johnson', 'Sunset City', 'michael@example.com')
     CurrentAccount('Lisa Williams', 'Bayside', 'lisa@example.com')
-    CurrentAccount('Daniel Brown', 'Hometown', 'daniel@example.com')
-    CurrentAccount('Sarah Davis', 'Riverdale', 'sarah@example.com')
 #-----------------------------------------------------------------------------------------------------------------------
 
 

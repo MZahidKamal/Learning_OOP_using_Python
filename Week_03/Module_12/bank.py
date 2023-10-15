@@ -80,5 +80,16 @@ class Bank:
 
     @classmethod
     def declare_bankruptcy(cls):
-        cls.Banking_Service_Controller = False
-        print(f'The Bank declared bankruptcy. Any kind of public service/transactions are discouraged.')
+        user_input = input('Are you sure that the bank will declare bankruptcy? (y/n): ')
+        if user_input == 'y':
+            user_input = input('For normal operation, you have to restart the program again. Still sure? (y/n): ')
+            if user_input == 'y':
+                cls.Banking_Service_Controller = False
+                print(f'The Bank declared bankruptcy. Any kind of public service/transactions are discouraged.')
+            elif user_input == 'n':
+                return
+        elif user_input == 'n':
+            return
+        else:
+            print('Invalid Option Selected.')
+            return
