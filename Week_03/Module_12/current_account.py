@@ -6,15 +6,11 @@ class CurrentAccount:
     TransactionHistory = []
     MaxLoanPerAccount = 50000
 
-    def __init__(self, name, dob, road, house_no, zip_code, city, email):
+    def __init__(self, name, city, email):
         if Bank.Banking_Service_Controller:
             self.AccountNumber = CurrentAccount.generate_current_acc_no()
             account = {
                 'Name': name,
-                'DateOfBirth': dob,
-                'Road': road,
-                'HouseNo': house_no,
-                'ZIPCode': zip_code,
                 'City': city,
                 'Email': email,
                 'AccountType': 'Current Account',
@@ -44,8 +40,7 @@ class CurrentAccount:
             if account['AccountNumber'] == account_number:
                 print('----- Account Information -----')
                 print('Account Name: ', account['Name'])
-                print('Date of Birth: ', account['DateOfBirth'])
-                print('Address: ', account['Road'], account['HouseNo'], account['ZIPCode'], account['City'])
+                print('Address: ', account['City'])
                 print('Email Address: ', account['Email'])
                 print('Account Type: ', account['AccountType'])
                 print('Account Number: ', account['AccountNumber'])
@@ -173,17 +168,19 @@ class CurrentAccount:
     @staticmethod
     def show_transaction_history(account_number):
         if Bank.Banking_Service_Controller:
+            account_exists = False
             for account in Bank.AllCurrentAccounts:
                 if account['AccountNumber'] == account_number:
+                    account_exists = True
+                    print(f'Transaction History for {account_number}:')
                     for transaction in CurrentAccount.TransactionHistory:
-                        print(f'Transaction History for {account_number}:')
                         if transaction['AccountNo'] == account_number:
                             print('Date/Time:', transaction['DateAndTime'], '\t', transaction['TransactionType'], '\t',
                                   transaction['Amount'], '€')
                         else:
                             print(f'No transaction made so far.')
-                else:
-                    print(f'Account {account_number} does not exist.')
+            if not account_exists:
+                print(f'Account {account_number} does not exist.')
         else:
             print(
                 f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')

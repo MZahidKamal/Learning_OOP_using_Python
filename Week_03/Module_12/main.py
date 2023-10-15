@@ -8,19 +8,19 @@ def main():
 
 
 #---Some dummy data for test purposes-----------------------------------------------------------------------------------
-    SavingsAccount('Robert Bosch', '15.12.1980', 'Ring Road', 41, 15783, 'Offenbach', 'robert@bosch.com')
-    SavingsAccount('Alice Johnson', '05.07.1992', 'Oak Street', 123, 54321, 'Springfield', 'alice@example.com')
-    SavingsAccount('Bob Smith', '12.03.1985', 'Maple Avenue', 456, 98765, 'Pleasant ville', 'bob@example.com')
-    SavingsAccount('Eva Davis', '20.09.1978', 'Elm Road', 789, 24680, 'Sunset City', 'eva@example.com')
-    SavingsAccount('David Wilson', '15.11.1987', 'Cedar Lane', 555, 11111, 'Bayside', 'david@example.com')
-    SavingsAccount('Sophia Lee', '30.04.1995', 'Pine Street', 777, 33333, 'Hometown', 'sophia@example.com')
+    SavingsAccount('Robert Bosch', 'Offenbach', 'robert@bosch.com')
+    SavingsAccount('Alice Johnson', 'Springfield', 'alice@example.com')
+    SavingsAccount('Bob Smith', 'Pleasant ville', 'bob@example.com')
+    SavingsAccount('Eva Davis', 'Sunset City', 'eva@example.com')
+    SavingsAccount('David Wilson', 'Bayside', 'david@example.com')
+    SavingsAccount('Sophia Lee', 'Hometown', 'sophia@example.com')
 
-    CurrentAccount('John Doe', '10.08.1980', 'Elm Street', 123, 45678, 'Springfield', 'john@example.com')
-    CurrentAccount('Jane Smith', '25.05.1990', 'Oak Avenue', 456, 98765, 'Pleasant ville', 'jane@example.com')
-    CurrentAccount('Michael Johnson', '15.02.1975', 'Maple Road', 789, 12345, 'Sunset City', 'michael@example.com')
-    CurrentAccount('Lisa Williams', '03.12.1989', 'Cedar Lane', 555, 22222, 'Bayside', 'lisa@example.com')
-    CurrentAccount('Daniel Brown', '20.06.1982', 'Pine Street', 777, 33333, 'Hometown', 'daniel@example.com')
-    CurrentAccount('Sarah Davis', '15.11.1977', 'Willow Lane', 321, 54321, 'Riverdale', 'sarah@example.com')
+    CurrentAccount('John Doe', 'Springfield', 'john@example.com')
+    CurrentAccount('Jane Smith', 'Pleasant ville', 'jane@example.com')
+    CurrentAccount('Michael Johnson', 'Sunset City', 'michael@example.com')
+    CurrentAccount('Lisa Williams', 'Bayside', 'lisa@example.com')
+    CurrentAccount('Daniel Brown', 'Hometown', 'daniel@example.com')
+    CurrentAccount('Sarah Davis', 'Riverdale', 'sarah@example.com')
 #-----------------------------------------------------------------------------------------------------------------------
 
 
@@ -65,23 +65,15 @@ def main():
 
                 if user_input == '1':
                     name = input('Enter your name: ')
-                    dob = input('Date of Birth: ')
-                    road = input('Road: ')
-                    house_no = input('House No: ')
-                    zip_code = input('ZIP Code: ')
                     city = input('City: ')
                     email = input('Email: ')
-                    SavingsAccount(name, dob, road, house_no, zip_code, city, email)
+                    SavingsAccount(name, city, email)
 
                 elif user_input == '2':
                     name = input('Enter your name: ')
-                    dob = input('Date of Birth: ')
-                    road = input('Road: ')
-                    house_no = input('House No: ')
-                    zip_code = input('ZIP Code: ')
                     city = input('City: ')
                     email = input('Email: ')
-                    CurrentAccount(name, dob, road, house_no, zip_code, city, email)
+                    CurrentAccount(name, city, email)
 
                 elif user_input == '3':
                     account_number = input('Enter your account number: ')
@@ -147,24 +139,16 @@ def main():
 
                         if user_input == '1':
                             name = input('Enter your name: ')
-                            dob = input('Date of Birth: ')
-                            road = input('Road: ')
-                            house_no = input('House No: ')
-                            zip_code = input('ZIP Code: ')
                             city = input('City: ')
                             email = input('Email: ')
-                            SavingsAccount(name, dob, road, house_no, zip_code, city, email)
+                            SavingsAccount(name, city, email)
                             break
 
                         elif user_input == '2':
                             name = input('Enter your name: ')
-                            dob = input('Date of Birth: ')
-                            road = input('Road: ')
-                            house_no = input('House No: ')
-                            zip_code = input('ZIP Code: ')
                             city = input('City: ')
                             email = input('Email: ')
-                            CurrentAccount(name, dob, road, house_no, zip_code, city, email)
+                            CurrentAccount(name, city, email)
                             break
 
                         else:
