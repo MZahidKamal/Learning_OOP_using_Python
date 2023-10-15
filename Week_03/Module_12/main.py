@@ -24,7 +24,6 @@ def main():
 #-----------------------------------------------------------------------------------------------------------------------
 
 
-
 #-----------------------------------------------------------------------------------------------------------------------
 #------------------------------------------R E P L I C A  S Y S T E M---------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
@@ -38,17 +37,17 @@ def main():
               '\n\t[3] User/Account Holder Login'
               '\n\t[4] Log out')
 
-        user_input = int(input('Your selection: '))
+        user_input = input('Your selection: ')
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-        if user_input == 1:
+        if user_input == '1':
             commerzbank.bank_info()
             continue
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-        elif user_input == 2:
+        elif user_input == '2':
             print('\n----- Admin/Managerial access given -----')
             while True:
                 print('\nSelect Option:'
@@ -62,9 +61,9 @@ def main():
                       '\n\t[8] Declare Bankrupt'
                       '\n\t[9] Sign out')
 
-                user_input = int(input('Your selection: '))
+                user_input = input('Your selection: ')
 
-                if user_input == 1:
+                if user_input == '1':
                     name = input('Enter your name: ')
                     dob = input('Date of Birth: ')
                     road = input('Road: ')
@@ -74,7 +73,7 @@ def main():
                     email = input('Email: ')
                     SavingsAccount(name, dob, road, house_no, zip_code, city, email)
 
-                elif user_input == 2:
+                elif user_input == '2':
                     name = input('Enter your name: ')
                     dob = input('Date of Birth: ')
                     road = input('Road: ')
@@ -84,35 +83,35 @@ def main():
                     email = input('Email: ')
                     CurrentAccount(name, dob, road, house_no, zip_code, city, email)
 
-                elif user_input == 3:
+                elif user_input == '3':
                     account_number = input('Enter your account number: ')
                     commerzbank.delete_account(account_number)
 
-                elif user_input == 4:
+                elif user_input == '4':
                     commerzbank.show_all_account_info()
 
-                elif user_input == 5:
+                elif user_input == '5':
                     commerzbank.show_bank_volt_balance()
 
-                elif user_input == 6:
+                elif user_input == '6':
                     commerzbank.show_total_bank_loan_amount()
 
-                elif user_input == 7:
+                elif user_input == '7':
                     print('\nSelect Option:'
                           '\n\t[1] Turn ON Loan Feature'
                           '\n\t[2] Turn OFF Loan Feature')
-                    user_input = int(input('Your selection: '))
-                    if user_input == 1:
+                    user_input = input('Your selection: ')
+                    if user_input == '1':
                         commerzbank.loan_feature_controller('ON')
-                    elif user_input == 2:
+                    elif user_input == '2':
                         commerzbank.loan_feature_controller('OFF')
                     else:
                         print('Invalid Option Selected.')
 
-                elif user_input == 8:
+                elif user_input == '8':
                     commerzbank.declare_bankruptcy()
 
-                elif user_input == 9:
+                elif user_input == '9':
                     print('Logged out from Admin/Managerial access.')
                     break
 
@@ -122,7 +121,7 @@ def main():
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-        elif user_input == 3:
+        elif user_input == '3':
             print('\n----- User/Account Holder access given -----')
             while True:
                 print('\nSelect Option:'
@@ -136,17 +135,17 @@ def main():
                       '\n\t[8] Show Transaction History'
                       '\n\t[9] Sign out')
 
-                user_input = int(input('Your selection: '))
+                user_input = input('Your selection: ')
 
-                if user_input == 1:
+                if user_input == '1':
                     while True:
                         print('\nAccount Type:'
                               '\n\t[1] Savings Account'
                               '\n\t[2] Current Account')
 
-                        user_input = int(input('Your selection: '))
+                        user_input = input('Your selection: ')
 
-                        if user_input == 1:
+                        if user_input == '1':
                             name = input('Enter your name: ')
                             dob = input('Date of Birth: ')
                             road = input('Road: ')
@@ -157,7 +156,7 @@ def main():
                             SavingsAccount(name, dob, road, house_no, zip_code, city, email)
                             break
 
-                        elif user_input == 2:
+                        elif user_input == '2':
                             name = input('Enter your name: ')
                             dob = input('Date of Birth: ')
                             road = input('Road: ')
@@ -172,13 +171,16 @@ def main():
                             print('Invalid Option Selected.')
                             continue
 
-                elif user_input == 2:
+                elif user_input == '2':
                     account_number = input('Enter your account number: ')
-                    for account in commerzbank.AllAccounts:
-                        if account['AccountNumber'] == account_number:
-                            print('Currently your account balance is', account['CurrentBalance'], '€')
+                    if account_number[:2] == 'SV':
+                        SavingsAccount.check_balance(account_number)
+                    elif account_number[:2] == 'CR':
+                        CurrentAccount.check_balance(account_number)
+                    else:
+                        print(f'Invalid account number.')
 
-                elif user_input == 3:
+                elif user_input == '3':
                     account_number = input('Enter your account number: ')
                     deposit_amount = int(input('How much you want to deposit: '))
 
@@ -189,7 +191,7 @@ def main():
                     else:
                         print(f'Invalid account number.')
 
-                elif user_input == 4:
+                elif user_input == '4':
                     account_number = input('Enter your account number: ')
                     desire_amount = int(input('How much you want to withdraw: '))
 
@@ -200,7 +202,7 @@ def main():
                     else:
                         print(f'Invalid account number.')
 
-                elif user_input == 5:
+                elif user_input == '5':
                     your_account_number = input('Enter your account number: ')
                     target_account_number = input('Enter beneficiary account number: ')
                     transfer_amount = int(input('How much you want to transfer: '))
@@ -212,7 +214,7 @@ def main():
                     else:
                         print(f'Invalid account number.')
 
-                elif user_input == 6:
+                elif user_input == '6':
                     account_number = input('Enter your account number: ')
                     loan_amount = int(input('How much you want to loan: '))
 
@@ -223,7 +225,7 @@ def main():
                     else:
                         print(f'Invalid account number.')
 
-                elif user_input == 7:
+                elif user_input == '7':
                     account_number = input('Enter your account number: ')
                     if account_number[:2] == 'SV':
                         print('Loan feature is only available for Current accounts.')
@@ -239,16 +241,16 @@ def main():
                     else:
                         print(f'Invalid account number.')
 
-                elif user_input == 8:
+                elif user_input == '8':
                     account_number = input('Enter your account number: ')
                     if account_number[:2] == 'SV':
-                        SavingsAccount.TransactionHistory(account_number)
+                        SavingsAccount.show_transaction_history(account_number)
                     elif account_number[:2] == 'CR':
-                        CurrentAccount.TransactionHistory(account_number)
+                        CurrentAccount.show_transaction_history(account_number)
                     else:
                         print(f'Invalid account number.')
 
-                elif user_input == 9:
+                elif user_input == '9':
                     print('Logged out from User/Account Holder access.')
                     break
                 else:
@@ -257,7 +259,7 @@ def main():
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-        elif user_input == 4:
+        elif user_input == '4':
             print('Logged out from Total System.')
             sys.exit()
 
