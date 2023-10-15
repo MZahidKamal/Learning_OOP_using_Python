@@ -116,7 +116,7 @@ class SavingsAccount:
                                     sv_account['CurrentBalance'] -= target_amount
                                     account['CurrentBalance'] += target_amount
                                     SavingsAccount.TransactionHistory.append(Transaction.record(your_account_number, 'Transfer Money', target_amount))
-                                    print(f'Transfer {target_amount}€, from account {sv_account} to {account} is successful.')
+                                    print(f'Transfer {target_amount}€, from account {your_account_number} to {target_account_number} is successful.')
                                     return
                                 else:
                                     print('Transfer amount exceeded.')

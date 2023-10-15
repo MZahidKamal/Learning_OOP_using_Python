@@ -120,7 +120,7 @@ class CurrentAccount:
                                     cr_account['CurrentBalance'] -= target_amount
                                     account['CurrentBalance'] += target_amount
                                     CurrentAccount.TransactionHistory.append(Transaction.record(your_account_number, 'Transfer Money', target_amount))
-                                    print(f'Transfer {target_amount}€, from account {cr_account} to {account} is successful.')
+                                    print(f'Transfer {target_amount}€, from account {your_account_number} to {target_account_number} is successful.')
                                     return
                                 else:
                                     print('Transfer amount exceeded.')
@@ -136,34 +136,37 @@ class CurrentAccount:
     @staticmethod
     def apply_loan(account_number, expected_loan_amount):
         if Bank.Banking_Service_Controller:
-            for account in Bank.AllCurrentAccounts:
-                if account['AccountNumber'] == account_number:
-                    if expected_loan_amount > 0:
-                        if expected_loan_amount <= account['MaxLoanLimit']:
-                            if account['LoanApplicationToBeGranted'] != 0:
-                                if account['CurrentBalance'] != 0:
-                                    account['CurrentBalance'] += expected_loan_amount
-                                    account['LoanTaken'] += expected_loan_amount
-                                    account['MaxLoanLimit'] -= expected_loan_amount
-                                    account['LoanApplicationToBeGranted'] -= 1
-                                    Bank.TotalLoanTaken += expected_loan_amount
-                                    Bank.TotalBankBalance += expected_loan_amount
-                                    CurrentAccount.TransactionHistory.append(Transaction.record(account_number, 'Loan Money', expected_loan_amount))
-                                    print(f'Loan approved, Cash {expected_loan_amount}€ is credited to your account.')
-                                    return
+            if Bank.Loan_Feature_Controller:
+                for account in Bank.AllCurrentAccounts:
+                    if account['AccountNumber'] == account_number:
+                        if expected_loan_amount > 0:
+                            if expected_loan_amount <= account['MaxLoanLimit']:
+                                if account['LoanApplicationToBeGranted'] != 0:
+                                    if account['CurrentBalance'] != 0:
+                                        account['CurrentBalance'] += expected_loan_amount
+                                        account['LoanTaken'] += expected_loan_amount
+                                        account['MaxLoanLimit'] -= expected_loan_amount
+                                        account['LoanApplicationToBeGranted'] -= 1
+                                        Bank.TotalLoanTaken += expected_loan_amount
+                                        Bank.TotalBankBalance += expected_loan_amount
+                                        CurrentAccount.TransactionHistory.append(Transaction.record(account_number, 'Loan Money', expected_loan_amount))
+                                        print(f'Loan approved, Cash {expected_loan_amount}€ is credited to your account.')
+                                        return
+                                    else:
+                                        print('Empty accounts are not eligible for loan application. To apply for loan, you must deposit an amount.')
+                                        return
                                 else:
-                                    print('Empty accounts are not eligible for loan application. To apply for loan, you must deposit an amount.')
+                                    print('You already have taken loan for two times. No further loan will be granted.')
                                     return
                             else:
-                                print('You already have taken loan for two times. No further loan will be granted.')
+                                print('Max Loan Limit amount exceeded.')
                                 return
                         else:
-                            print('Max Loan Limit amount exceeded.')
+                            print('Invalid Amount.')
                             return
-                    else:
-                        print('Invalid Amount.')
-                        return
-            print(f'Account {account_number} does not exist.')
+                print(f'Account {account_number} does not exist.')
+            else:
+                print(f'The bank has discontinued the loan feature. Therefore no application will be granted.')
         else:
             print(f'The Bank declared bankruptcies. Any kind of public service/transactions are discontinued/discouraged.')
 

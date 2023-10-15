@@ -24,6 +24,7 @@ def main():
 #-----------------------------------------------------------------------------------------------------------------------
 
 
+
 #-----------------------------------------------------------------------------------------------------------------------
 #------------------------------------------R E P L I C A  S Y S T E M---------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
@@ -84,7 +85,7 @@ def main():
                     CurrentAccount(name, dob, road, house_no, zip_code, city, email)
 
                 elif user_input == 3:
-                    account_number = input('\nEnter your account number: ')
+                    account_number = input('Enter your account number: ')
                     commerzbank.delete_account(account_number)
 
                 elif user_input == 4:
@@ -172,14 +173,14 @@ def main():
                             continue
 
                 elif user_input == 2:
-                    account_number = input('\nEnter your account number: ')
+                    account_number = input('Enter your account number: ')
                     for account in commerzbank.AllAccounts:
                         if account['AccountNumber'] == account_number:
                             print('Currently your account balance is', account['CurrentBalance'], '€')
 
                 elif user_input == 3:
-                    account_number = input('\nEnter your account number: ')
-                    deposit_amount = int(input('\nHow much you want to deposit: '))
+                    account_number = input('Enter your account number: ')
+                    deposit_amount = int(input('How much you want to deposit: '))
 
                     if account_number[:2] == 'SV':
                         SavingsAccount.deposit_money(account_number, deposit_amount)
@@ -189,8 +190,8 @@ def main():
                         print(f'Invalid account number.')
 
                 elif user_input == 4:
-                    account_number = input('\nEnter your account number: ')
-                    desire_amount = int(input('\nHow much you want to withdraw: '))
+                    account_number = input('Enter your account number: ')
+                    desire_amount = int(input('How much you want to withdraw: '))
 
                     if account_number[:2] == 'SV':
                         SavingsAccount.withdraw_money(account_number, desire_amount)
@@ -200,9 +201,9 @@ def main():
                         print(f'Invalid account number.')
 
                 elif user_input == 5:
-                    your_account_number = input('\nEnter your account number: ')
-                    target_account_number = input('\nEnter beneficiary account number: ')
-                    transfer_amount = int(input('\nHow much you want to transfer: '))
+                    your_account_number = input('Enter your account number: ')
+                    target_account_number = input('Enter beneficiary account number: ')
+                    transfer_amount = int(input('How much you want to transfer: '))
 
                     if your_account_number[:2] == 'SV':
                         SavingsAccount.transfer_money(your_account_number, target_account_number, transfer_amount)
@@ -212,8 +213,8 @@ def main():
                         print(f'Invalid account number.')
 
                 elif user_input == 6:
-                    account_number = input('\nEnter your account number: ')
-                    loan_amount = int(input('\nHow much you want to loan: '))
+                    account_number = input('Enter your account number: ')
+                    loan_amount = int(input('How much you want to loan: '))
 
                     if account_number[:2] == 'SV':
                         print('Loan feature is only available for Current accounts.')
@@ -223,7 +224,7 @@ def main():
                         print(f'Invalid account number.')
 
                 elif user_input == 7:
-                    account_number = input('\nEnter your account number: ')
+                    account_number = input('Enter your account number: ')
                     if account_number[:2] == 'SV':
                         print('Loan feature is only available for Current accounts.')
                     elif account_number[:2] == 'CR':
@@ -239,7 +240,7 @@ def main():
                         print(f'Invalid account number.')
 
                 elif user_input == 8:
-                    account_number = input('\nEnter your account number: ')
+                    account_number = input('Enter your account number: ')
                     if account_number[:2] == 'SV':
                         SavingsAccount.TransactionHistory(account_number)
                     elif account_number[:2] == 'CR':
