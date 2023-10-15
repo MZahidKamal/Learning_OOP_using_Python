@@ -3,9 +3,8 @@ from bank import Bank
 from transaction import Transaction
 
 class CurrentAccount:
-    #AllCurrentAccounts = []
-    MaxLoanPerAccount = 50000
     TransactionHistory = []
+    MaxLoanPerAccount = 50000
 
     def __init__(self, name, dob, road, house_no, zip_code, city, email):
         if Bank.Banking_Service_Controller:
@@ -148,6 +147,8 @@ class CurrentAccount:
                                     print(f'Loan approved, Cash {expected_loan_amount}€ is credited to your account.')                                                                           # Add to transaction history
                                 else:
                                     print('Empty accounts are not eligible for loan application. To apply for loan, you must deposit an amount.')
+                            else:
+                                print('You already have taken loan for two times. No further loan will be granted.')
                         else:
                             print('Max Loan Limit amount exceeded.')
                     else:
