@@ -3,7 +3,7 @@ from bank import Bank
 from transaction import Transaction
 
 class CurrentAccount:
-    AllCurrentAccounts = Bank.AllCurrentAccounts.copy()
+    #AllCurrentAccounts = []
     MaxLoanPerAccount = 50000
     TransactionHistory = []
 
@@ -25,7 +25,7 @@ class CurrentAccount:
                 'MaxLoanLimit': self.MaxLoanPerAccount,
                 'LoanTaken': 0
             }
-            CurrentAccount.AllCurrentAccounts.append(account)
+            Bank.AllCurrentAccounts.append(account)
             Bank.AllAccounts.append(account)
             print(f'Successfully created account {self.AccountNumber}, for {name}.')
         else:
@@ -35,13 +35,13 @@ class CurrentAccount:
     def generate_current_acc_no():
         while True:
             new_acc_no = random.randrange(1000, 10000)
-            if new_acc_no not in CurrentAccount.AllCurrentAccounts:
+            if new_acc_no not in Bank.AllCurrentAccounts:
                 new_acc_no = 'CR' + str(new_acc_no)
                 return new_acc_no
 
     @staticmethod
     def account_info(account_number):
-        for account in CurrentAccount.AllCurrentAccounts:
+        for account in Bank.AllCurrentAccounts:
             if account['AccountNumber'] == account_number:
                 print('----- Account Information -----')
                 print('Account Name: ', account['Name'])
@@ -56,7 +56,7 @@ class CurrentAccount:
     @staticmethod
     def deposit_money(account_number, deposit_amount):
         if Bank.Banking_Service_Controller:
-            for account in CurrentAccount.AllCurrentAccounts:
+            for account in Bank.AllCurrentAccounts:
                 if account['AccountNumber'] == account_number:
                     if deposit_amount > 0:
                         account['CurrentBalance'] += deposit_amount
@@ -73,7 +73,7 @@ class CurrentAccount:
     @staticmethod
     def withdraw_money(account_number, expected_amount):
         if Bank.Banking_Service_Controller:
-            for account in CurrentAccount.AllCurrentAccounts:
+            for account in Bank.AllCurrentAccounts:
                 if account['AccountNumber'] == account_number:
                     if expected_amount > 0:
                         if expected_amount <= account['CurrentBalance']:
@@ -93,7 +93,7 @@ class CurrentAccount:
     @staticmethod
     def check_balance(account_number):
         if Bank.Banking_Service_Controller:
-            for account in CurrentAccount.AllCurrentAccounts:
+            for account in Bank.AllCurrentAccounts:
                 if account['AccountNumber'] == account_number:
                     current_balance = account['CurrentBalance']
                     if current_balance == 0:
@@ -108,7 +108,7 @@ class CurrentAccount:
     @staticmethod
     def transfer_money(your_account_number, target_account_number, target_amount):
         if Bank.Banking_Service_Controller:
-            for cr_account in CurrentAccount.AllCurrentAccounts:
+            for cr_account in Bank.AllCurrentAccounts:
                 if cr_account['AccountNumber'] == your_account_number:
                     for account in Bank.AllAccounts:
                         if account['AccountNumber'] == target_account_number:
@@ -132,7 +132,7 @@ class CurrentAccount:
     @staticmethod
     def apply_loan(account_number, expected_loan_amount):
         if Bank.Banking_Service_Controller:
-            for account in CurrentAccount.AllCurrentAccounts:
+            for account in Bank.AllCurrentAccounts:
                 if account['AccountNumber'] == account_number:
                     if expected_loan_amount > 0:
                         if expected_loan_amount <= account['MaxLoanLimit']:

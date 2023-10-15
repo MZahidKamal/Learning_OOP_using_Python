@@ -5,6 +5,29 @@ import sys
 
 def main():
     commerzbank = Bank('CommerzBank', 'Wellknown Street', 55, 46589, 'Frankfurt', 'Hessen', 'Germany', 'www.commerzbank.de')
+
+
+#---Some dummy data for test purposes-----------------------------------------------------------------------------------
+    SavingsAccount('Robert Bosch', '15.12.1980', 'Ring Road', 41, 15783, 'Offenbach', 'robert@bosch.com')
+    SavingsAccount('Alice Johnson', '05.07.1992', 'Oak Street', 123, 54321, 'Springfield', 'alice@example.com')
+    SavingsAccount('Bob Smith', '12.03.1985', 'Maple Avenue', 456, 98765, 'Pleasant ville', 'bob@example.com')
+    SavingsAccount('Eva Davis', '20.09.1978', 'Elm Road', 789, 24680, 'Sunset City', 'eva@example.com')
+    SavingsAccount('David Wilson', '15.11.1987', 'Cedar Lane', 555, 11111, 'Bayside', 'david@example.com')
+    SavingsAccount('Sophia Lee', '30.04.1995', 'Pine Street', 777, 33333, 'Hometown', 'sophia@example.com')
+
+    CurrentAccount('John Doe', '10.08.1980', 'Elm Street', 123, 45678, 'Springfield', 'john@example.com')
+    CurrentAccount('Jane Smith', '25.05.1990', 'Oak Avenue', 456, 98765, 'Pleasant ville', 'jane@example.com')
+    CurrentAccount('Michael Johnson', '15.02.1975', 'Maple Road', 789, 12345, 'Sunset City', 'michael@example.com')
+    CurrentAccount('Lisa Williams', '03.12.1989', 'Cedar Lane', 555, 22222, 'Bayside', 'lisa@example.com')
+    CurrentAccount('Daniel Brown', '20.06.1982', 'Pine Street', 777, 33333, 'Hometown', 'daniel@example.com')
+    CurrentAccount('Sarah Davis', '15.11.1977', 'Willow Lane', 321, 54321, 'Riverdale', 'sarah@example.com')
+#-----------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+#------------------------------------------R E P L I C A  S Y S T E M---------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
+
     print(f'\n---------- Welcome to {commerzbank.Name} ----------')
     while True:
 
@@ -18,7 +41,9 @@ def main():
         if user_input == 1:
             commerzbank.bank_info()
             continue
+
 #-----------------------------------------------------------------------------------------------------------------------
+
         elif user_input == 2:
             print('\n----- Admin/Managerial access given -----')
             while True:
@@ -29,8 +54,9 @@ def main():
                       '\n\t[4] Show All User Account List'
                       '\n\t[5] Show Bank Volt Balance'
                       '\n\t[6] Show Bank Loan Balance'
-                      '\n\t[7] Declare Bankrupt'
-                      '\n\t[8] Sign out')
+                      '\n\t[7] NO/OFF Loan Feature'
+                      '\n\t[8] Declare Bankrupt'
+                      '\n\t[9] Sign out')
 
                 user_input = int(input('Your selection: '))
 
@@ -55,38 +81,58 @@ def main():
                     CurrentAccount(name, dob, road, house_no, zip_code, city, email)
 
                 elif user_input == 3:
-                    print('Delete Action Function need to be developed.')
+                    account_number = input('Enter your account number: ')
+                    commerzbank.delete_account(account_number)
 
                 elif user_input == 4:
-                    print('Show All User Account List Function need to be developed.')
+                    commerzbank.show_all_account_info()
 
                 elif user_input == 5:
-                    print('Show Bank Volt Balance Function need to be developed.')
+                    commerzbank.show_bank_volt_balance()
 
                 elif user_input == 6:
-                    print('Show Bank Loan Balance Function need to be developed.')
+                    commerzbank.show_total_bank_loan_amount()
 
                 elif user_input == 7:
-                    commerzbank.declare_bankrupt()
+                    print('\nSelect Option:'
+                          '\n\t[1] Turn ON Loan Feature'
+                          '\n\t[2] Turn OFF Loan Feature')
+                    user_input = int(input('Your selection: '))
+                    if user_input == 1:
+                        commerzbank.loan_feature_controller('ON')
+                    elif user_input == 2:
+                        commerzbank.loan_feature_controller('OFF')
+                    else:
+                        print('Invalid Option Selected.')
 
                 elif user_input == 8:
+                    commerzbank.declare_bankruptcy()
+
+                elif user_input == 9:
                     print('Logged out from Admin/Managerial access.')
+                    break
 
                 else:
                     print('Invalid Option Selected.')
                     continue
 
 #-----------------------------------------------------------------------------------------------------------------------
+
         elif user_input == 3:
             print('\n----- User/Account Holder access given -----')
-            print('\nSelect Option:'
-                  '\n\t[1] Create Account'
-                  '\n\t[2] Delete Account'
-                  '\n\t[3] Show All User Account List'
-                  '\n\t[4] Show Bank Volt Balance'
-                  '\n\t[5] Show Bank Loan Balance'
-                  '\n\t[6] Declare Bankrupt'
-                  '\n\t[7] Sign out')
+            while True:
+                print('\nSelect Option:'
+                      '\n\t[1] Create Account'
+                      '\n\t[2] Show Available Balance'
+                      '\n\t[3] Deposit Money'
+                      '\n\t[4] Withdraw Money'
+                      '\n\t[5] Transfer Money'
+                      '\n\t[6] Apply for Loan'
+                      '\n\t[7] Show Loan Balance'
+                      '\n\t[8] Show Transaction History'
+                      '\n\t[9] Sign out')
+
+#-----------------------------------------------------------------------------------------------------------------------
 
         elif user_input == 4:
             print('Logged out from Total System.')
